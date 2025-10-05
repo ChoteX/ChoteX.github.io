@@ -1,51 +1,52 @@
+# Personal Website - Dachi Tchotashvili
 
-# Tailwind Personal Website (3 Pages)
+A 3-page personal portfolio built with the Tailwind CSS CDN. 
 
-A simple, accessible personal website built with **Tailwind CSS** using the Play CDN. It includes three pages:
-- `index.html` (Home)
-- `about.html` (About)
-- `projects.html` (Projects)
+## Access
+- Page is available as a public GitHub page: https://chotex.github.io/index.html
 
-## Quick Start
+## Overview
+The site is organized around three static HTML pages (`index.html`, `about.html`, `projects.html`) and provides a brief academic/work journey of myself. Viewers will get an understanding of my skills and work interests as well as hobbies. The About page provides my academic history, detailed work experience, and notable awards. The Projects page features my completed works with imagery and tech tags so visitors can filter relevance at a glance.
 
-1. Download and unzip the project.
-2. Open `index.html` in your browser.
-3. Edit content directly in the HTML files (search for placeholders like "Your Name").
+## Site Map
+- `index.html` — Introduction, featured project call-to-action, and global navigation.
+  - Primary navigation (sticky header) routes to all pages and uses `aria-current` for accessibility.
+- `about.html` — Education timeline, experience cards, and achievement timeline.
+  - Sections: Education, Experience, Achievements; each uses consistent card layouts.
+- `projects.html` — Grid of project summaries and tags.
+  - Includes client-side search to filter the grid in real time.
+- Global footer — Present on all pages with dynamic year and credits; links to Tailwind CSS, MBZUAI, and Komarovi STEM School resources.
 
-> Tailwind is loaded via the Play CDN, so there's no build step required.
+## Design Notes
+- **Layout:** Tailwind utility classes enable quick iteration; responsive grid/stack transitions ensure readability on mobile and desktop.
+- **Color & Typography:** Custom `brand` palette (blue gradient) makes the color palette consistent and matches the MBZUAI logo palette. A gray background was selected for a professional look. The education, experience, and achievements sections have different color splashes for contrast.
+- **Interaction:** Sticky navigation, hover states, and accessible focus rings keep navigation obvious while keeping the website lightweight.
 
-## Customization
+## Screenshots
+- ## Home page
+  ![Home](screenshots/scr1.png)
+- ## Education timeline (about page)
+  ![About education timeline](screenshots/scr2.png)
+- ## Experience cards (about page)
+  ![Experience cards](screenshots/scr3.png)
+- ## Achievements (about page)
+  ![Achievements](screenshots/scr4.png)
+- ## Projects grid with search (projects page)
+  ![Projects grid with search](screenshots/scr5.png)
 
-- **Brand color**: Update the `brand` palette in the inline `tailwind.config` within the `<head>`.
-- **Navigation**: Edit the `nav` block to add links or change titles.
-- **Cards/content**: Duplicate the example project cards and update text/links.
-- **Accessibility**: Active nav link uses `aria-current="page"`. Inputs and landmarks include labels/roles.
+## Credits
+- Tailwind CSS Play CDN configuration
+- MBZUAI logo
+- Komarovi STEM School logo
+- World Robot Olympiad logo
+- IPhO 2023 logo 
+- IYPT logo
+- Georgian Robotics Association logo
+- IOAA logo
 
-## Deployment
+## Bonus Work
 
-- **GitHub Pages**: Push to a repo and enable Pages (root).  
-- **Netlify/Vercel**: Drag & drop or link your repo.  
-- **Static hosting**: Any static file server works (no server code needed).
+- line - `<meta name="viewport" content="width=device-width, initial-scale=1">`
+makes the website adjust its contents depending on the viewing resolution
 
-## Optional: Local Dev Server
-
-Use a simple Python server from the project folder:
-
-```bash
-python3 -m http.server 5173
-```
-Open `http://localhost:5173`.
-
-## Folder Structure
-
-```
-tailwind-personal-site/
-├── index.html
-├── about.html
-├── projects.html
-└── README.md
-```
-
-## License
-
-MIT — do whatever you want, just don't hold me liable.
+- Created a public GitHub page
