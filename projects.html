@@ -163,8 +163,16 @@
   </div>
 </main>
 <footer class="mt-24 border-t">
-  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
     <p>© <span id="year"></span> Dachi Tchotashvili. All rights reserved.</p>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span class="font-medium text-gray-600">Credits:</span>
+      <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="hover:text-brand-600">Tailwind CSS<span class="sr-only"> (opens in new tab)</span></a>
+      <span aria-hidden="true" class="text-gray-400">•</span>
+      <a href="https://mbzuai.ac.ae" target="_blank" rel="noopener" class="hover:text-brand-600">MBZUAI<span class="sr-only"> (opens in new tab)</span></a>
+      <span aria-hidden="true" class="text-gray-400">•</span>
+      <a href="https://komarovi.edu.ge" target="_blank" rel="noopener" class="hover:text-brand-600">Komarovi STEM School<span class="sr-only"> (opens in new tab)</span></a>
+    </div>
   </div>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </footer>
