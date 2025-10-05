@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home — My Portfolio</title>
+  <meta name="description" content="Personal website built with Tailwind CSS">
+  <link rel="icon" href="data:,">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-900">
+<header class="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="font-semibold text-lg tracking-tight">My Portfolio</a>
+      <nav class="flex items-center gap-1" aria-label="Primary">
+        <a href="index.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400">Home</a>
+        <a href="about.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-400">About</a>
+        <a href="projects.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-400">Projects</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<script>
+  // Add 'aria-current="page"' and active styles based on current file
+  (function () {{
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(a => {{
+      if (a.getAttribute('href') === path) {{
+        a.classList.add('bg-brand-600','text-white');
+        a.setAttribute('aria-current','page');
+      }}
+    }});
+  }})();
+</script>
+
+<main>
+  <section class="relative overflow-hidden bg-gradient-to-br from-gray-300 to-white">
+    <div class="max-w-6xl mx-auto px-4 py-24">
+      <div class="grid md:grid-cols-2 items-center gap-12">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Hello, I'm</h1>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-700">Dachi Tchotashvili</span>.</h1>
+          <p class="mt-4 text-lg text-gray-600">I aspire to create robotic systems that integrate into the nature and serve humanity.</p>
+          <div class="mt-8 flex gap-3">
+            <a href="projects.html" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-brand-600 text-white font-medium shadow hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-400">View Projects</a>
+            <a href="about.html" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl border font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-400">About Me</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[1/1] rounded-[28px] border shadow-sm bg-gray-100 flex items-center justify-center">
+            <div class="p-4 text-center rounded-[30px] border overflow-hidden">
+              <img src="profile.png" alt="Dachi Tchotashvili" loading="lazy" class="rounded-2xl" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-bold">Featured Projects</h2>
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Example cards (duplicate/edit or remove) -->
+      
+      <article class="group rounded-2xl border hover:shadow transition-shadow overflow-hidden">
+        <a href="projects.html" class="block focus:outline-none focus:ring-2 focus:ring-brand-400">
+          <div class="aspect-video bg-gray-100 flex items-center justify-center">
+            <img src="lara.png">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold">L.A.R.A.</h3>
+            <p class="mt-2 text-sm text-gray-600">Laboratory Assistant Robot Arm</p>
+            <span class="mt-3 inline-block text-sm text-brand-700">See more →</span>
+          </div>
+        </a>
+      </article>
+      
+      <article class="group rounded-2xl border hover:shadow transition-shadow overflow-hidden">
+        <a href="projects.html" class="block focus:outline-none focus:ring-2 focus:ring-brand-400">
+          <div class="aspect-video bg-gray-100 flex items-center justify-center">
+            <img src = "sumo.jpg">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold">Tekkai v1</h3>
+            <p class="mt-2 text-sm text-gray-600">Autonomious sumo robot / 500g category</p>
+            <span class="mt-3 inline-block text-sm text-brand-700">See more →</span>
+          </div>
+        </a>
+      </article>
+      
+      <article class="group rounded-2xl border hover:shadow transition-shadow overflow-hidden">
+        <a href="projects.html" class="block focus:outline-none focus:ring-2 focus:ring-brand-400">
+          <div class="aspect-video bg-gray-100 flex items-center justify-center">
+            <img src = "wro.jpg">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold">Pythagora v3</h3>
+            <p class="mt-2 text-sm text-gray-600">WRO Georgia championship winning robot. Full score best time: 0:59/2:00</p>
+            <span class="mt-3 inline-block text-sm text-brand-700">See more →</span>
+          </div>
+        </a>
+      </article>
+      
+    </div>
+  </section>
+</main>
+<footer class="mt-24 border-t">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500">
+    <p>© <span id="year"></span> Dachi Tchotashvili. All rights reserved.</p>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — My Portfolio</title>
+  <meta name="description" content="About me">
+  <link rel="icon" href="data:,">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-900">
+<header class="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="font-semibold text-lg tracking-tight">My Portfolio</a>
+      <nav class="flex items-center gap-1" aria-label="Primary">
+        <a href="index.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-400">Home</a>
+        <a href="about.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400">About</a>
+        <a href="projects.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-400">Projects</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<script>
+  // Add 'aria-current="page"' and active styles based on current file
+  (function () {{
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(a => {{
+      if (a.getAttribute('href') === path) {{
+        a.classList.add('bg-brand-600','text-white');
+        a.setAttribute('aria-current','page');
+      }}
+    }});
+  }})();
+</script>
+
+<main>
+  <section class="relative overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-100">
+    <div class = "max-w-3xl mx-auto px-4 py-16">
+      <h1 class="text-3xl font-extrabold tracking-tight">About Me</h1>
+      <p class="mt-4 text-gray-700 leading-7">
+        As an alumni and ex-faculty of Georgian physics and mathematics high school, 
+        I am passionate about developing better educational tools for future generations.
+      </p>
+      <p class="text-gray-700 leading-7">
+        My studies explore intersections of physics, engineering and arts.
+        And so do my hobbies: I love playing piano, or sports like table tennis and football.
+      </p>
+
+      <div class="mt-10 grid sm:grid-cols-2 gap-6">
+        <div class="rounded-2xl border p-5 transition-all duration-300 hover:shadow-xl hover:border-brand-300">
+          <h2 class="font-semibold">Skills</h2>
+          <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+            <li>AutoCad / Fusion 360</li>
+            <li>MatLab</li>
+            <li>AI design / Python programming</li>
+            <li>Embedded systems programming</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border p-5 transition-all duration-300 hover:shadow-xl hover:border-brand-300">
+          <h2 class="font-semibold">Contact</h2>
+          <ul class="mt-3 text-gray-700 space-y-2">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:Dachi.Tchotashvili@mbzuai.ac.ae" class="text-gray-800 hover:underline">Dachi.Tchotashvili@mbzuai.ac.ae</a>
+            </li> 
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20.5h-2.5v-8.75h2.5v8.75zm-1.25-9.981c-.802 0-1.453-.651-1.453-1.453 0-.803.651-1.453 1.453-1.453s1.453.65 1.453 1.453c0 .802-.651 1.453-1.453 1.453zm13 9.981h-2.5v-4.375c0-1.043-.019-2.384-1.453-2.384-1.453 0-1.676 1.135-1.676 2.307v4.452h-2.5v-8.75h2.4v1.196h.034c.334-.632 1.152-1.298 2.372-1.298 2.537 0 3.012 1.67 3.012 3.839v4.013z"/></svg>
+              <a href="https://www.linkedin.com/in/dachiko" target="_blank" rel="noopener" class="text-gray-800 hover:underline">linkedin.com/in/dachiko<span class="sr-only"> (opens in new tab)</span></a>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .296C5.373.296 0 5.67 0 12.296c0 5.292 3.438 9.778 8.205 11.366.6.111.82-.261.82-.58 0-.287-.011-1.243-.017-2.252-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 013.004-.404c1.02.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.655 1.653.243 2.873.119 3.176.77.839 1.235 1.91 1.235 3.22 0 4.61-2.804 5.624-5.475 5.921.43.371.814 1.102.814 2.222 0 1.604-.015 2.898-.015 3.292 0 .321.216.697.825.578C20.565 22.07 24 17.584 24 12.296 24 5.67 18.627.296 12 .296z"/></svg>
+              <a href="https://github.com/ChoteX" target="_blank" rel="noopener" class="text-brand-700 hover:underline">github.com/ChoteX<span class="sr-only"> (opens in new tab)</span></a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+
+  </section>
+
+  <div class="border-2 border-gray-400"></div>
+
+  <!-- Education -->
+  <section class="relative overflow-hidden bg-gray-100">
+    <div class="absolute inset-x-20 -top-20 h-80 rounded-full bg-indigo-500/20 blur-3xl"></div>
+    <div class="max-w-5xl mx-auto px-4 py-24 isolate"> 
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-center">Education</h1>
+      <div class="mt-8 grid gap-6 md:grid-cols-1">
+        <!-- University -->
+        <article class="border-l-4 border-brand-300 pl-5 rounded-2xl border bg-white/90 p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-500">
+          <!-- Flex row: Logo + Content -->
+          <div class="flex items-start gap-4">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+              <img src="mbzlogo.webp" alt="MBZUAI logo" class="w-20 h-auto rounded-xl">
+            </div>
+
+            <!-- All text stacked in one column -->
+            <div class="flex-1">
+              <!-- Name + Location in the same row -->
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold">Mohamed Bin Zayed University of Artificial Intelligence</h3>
+                <span class="shrink-0 rounded-full border px-3 py-1 border-black border-1 pl-3 font-medium text-gray-700">
+                  Abu Dhabi, UAE
+                </span>
+              </div>
+
+              <p class="mt-1 text-sm font-semibold text-gray-600">BSc in AI Engineering</p>
+              <p class="mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1 border-black border-1 pl-3 text-sm font-bold text-black">
+                2025 – present
+              </p>
+
+              <!-- Clubs -->
+              <h2 class="mt-5 text-base font-semibold">Clubs:</h2>
+              <ul class="mt-1 list-disc list-inside space-y-1 text-sm">
+                <li>Robotics</li>
+                <li>Student Formula</li>
+                <li>Entrepreneurship</li>
+                <li>Rock Climbing</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- High School -->
+        <article class="border-l-4 border-brand-300 pl-5 rounded-2xl border bg-white/90 p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-500">
+          <!-- Flex row: Logo + Content -->
+          <div class="flex items-start gap-4">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+              <img src="komarovi.png" alt="komarovi logo" class="w-20 h-auto">
+            </div>
+
+            <!-- All text stacked in one column -->
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold">Tbilisi Public School N199 of Physics and Mathematics</h3>
+                <span class="shrink-0 rounded-full border px-3 py-1 border-black border-1 pl-3 font-medium text-gray-700">Tbilisi, Georgia</span>
+              </div>
+
+                
+              <p class="text-m font-extrabold text-gray-500">High School</p>
+              <p class="mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1 border-black border-1 pl-3 text-sm font-bold text-black">
+                SEP 2019 - APR 2023
+              </p>
+              <ul class="mt-4 list-disc list-inside space-y-1 text-sm">
+                <li>Graduated with 4.0 GPA; received the <span class="font-medium">Golden Medal of Excellence</span> from the Ministry of Education.</li>
+                <li>Qualified in <span class="font-medium">top 5</span> students in physics & <span class="font-medium">top 10</span> in mathematics olympiads nationally.</li>
+                <li><span class="font-medium">SAT: 1540</span> (750 Verbal, 790 Math)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+    </div>
+  </section>
+  
+  <div class="border-2 border-gray-400"></div>
+
+  <!-- Experience -->
+  <section class="relative overflow-hidden bg-gray-100">
+    <div class="absolute inset-x-20 -top-20 h-80 rounded-full bg-emerald-500/20 blur-3xl"></div>
+  <div class="max-w-5xl mx-auto px-4 py-24 isolate">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-center">Experience</h1>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-1">
+  <!-- Head of Lab (2023–2025) -->
+  <article class="relative z-20 rounded-2xl border bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-emerald-300">
+          <div class="flex items-start gap-4">
+            <!-- photo/logo placeholder -->
+            <div class="flex-shrink-0 w-20 h-20 rounded-xl border bg-gray-100 flex items-center justify-center text-xs text-gray-500">
+              <img src="komarovi.png" alt="komarovi logo" class="w-20 h-auto">
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold">Head of Komarovi STEM Laboratory</h3>
+                <span class="shrink-0 rounded-full border px-3 py-1 text-xs font-medium text-gray-700">2023 – 2025</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">Tbilisi, Georgia</p>
+              <p class="mt-3 text-sm text-gray-700">
+                <!-- brief description -->
+                Lead end-to-end lab operations, curriculum design, Equipment managment, and competition prep. 
+                <span class="text-gray-400">Mentored National IYPT 2024 team achievning Bronze Medal</span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- EuPhO Academic Committee (2024) -->
+  <article class="relative z-20 rounded-2xl border bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-emerald-300">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-20 h-20 rounded-xl border bg-gray-800 flex items-center justify-center text-xs text-gray-500">
+              <img src="EuPho-Logo-03-2048x780.png" alt="eupho logo" class="w-20 h-auto">
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold">European Physics Olympiad — Academic Committee Member</h3>
+                <span class="shrink-0 rounded-full border px-3 py-1 text-xs font-medium text-gray-700">2024</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">International</p>
+              <p class="mt-3 text-sm text-gray-700">
+                <!-- brief description -->
+                Worked with 15 international physicists in creation of 8th European 
+                Physics Olympiad problems. Designed high-quality experimental sets for 280 participants. 
+                <span class="text-gray-400"></span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Administrator, Online STEM School (2023–2024) -->
+  <article class="relative z-20 rounded-2xl border bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-emerald-300">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-20 h-20 rounded-xl border bg-purple-500 flex items-center justify-center text-xs text-gray-500">
+              <img src="stemschool.png" alt="komarovi logo" class="w-20 h-auto">
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold">Administrator — Online STEM School of Georgia</h3>
+                <span class="shrink-0 rounded-full border px-3 py-1 text-xs font-medium text-gray-700">2023 – 2024</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">Tbilisi, Georgia</p>
+              <p class="mt-3 text-sm text-gray-700">
+                <!-- brief description -->
+                Managed Google Classroom workspace for 400+ students. 
+                Collaborated with teachers to create interactive, hands-on learning with Tinkercad software. 
+                Assisted students in technical issues & equipment preparation.
+                <span class="text-gray-400"></span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Physics Research (2021–2024) -->
+  <article class="relative z-20 rounded-2xl border bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-emerald-300">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-20 h-20 rounded-xl border bg-white/90 flex items-center justify-center text-xs text-gray-500">
+              <img src="iypt.png" alt="komarovi logo" class="w-20 h-auto">
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold">Independent Physics Research</h3>
+                <span class="shrink-0 rounded-full border px-3 py-1 text-xs font-medium text-gray-700">2021 – 2024</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">[Komarovi Physics Research Club]</p>
+              <p class="mt-3 text-sm text-gray-700">
+                <!-- brief description -->
+                Studied dynamics of complex mechanical systems, bending mechanics, ran electromagnetic simulations, modeled hydrodynamic problems like hydraulic jump.
+                <span class="text-gray-400">[Supervisors: National university professors]</span>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="border-2 border-gray-400"></div>
+
+  <!-- Achievements -->
+  <section class="relative overflow-hidden bg-gray-100">
+    <div class="absolute inset-x-20 -top-10 h-80 rounded-full bg-rose-500/20 blur-3xl"></div>
+    <div class="absolute inset-x-32 bottom-10 h-64 rounded-full bg-rose-500/20 blur-3xl"></div>
+    <div class="max-w-5xl mx-auto px-4 py-24 text-slate-200">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-black text-center">Achievements</h1>
+
+      <div class="relative mt-16">
+        <div class="pointer-events-none absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 bg-gradient-to-b from-rose-500 via-emerald-400 to-sky-400 md:block"></div>
+        <div class="space-y-16">
+          <!-- 6: Sumo Robot Championship -->
+        <div class="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-10">
+          <div class="hidden md:block"></div>
+          <div class="relative flex items-center justify-center py-6 md:py-0">
+            <div class="hidden md:block absolute right-full top-1/2 h-px w-6 -translate-y-1/2 bg-rose-300/60"></div>
+            <span class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-slate-950 bg-rose-500 text-2xl font-semibold text-white shadow-lg shadow-rose-500/40">6</span>
+            <div class="hidden md:block absolute left-full top-1/2 h-px w-20 -translate-y-1/2 bg-rose-300/60"></div>
+          </div>
+          <div class="text-center md:text-left md:pl-10">
+            <div class="mx-auto inline-flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white px-6 py-6 text-center shadow-lg shadow-black/20 backdrop-blur md:items-start md:text-left transition-all duration-300 hover:shadow-2xl hover:border-white/40">
+              
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-800">2025 June</p>
+              <div class="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-start md:gap-3">
+                          
+                <img src = gralogo-text.png class="h-auto w-20">
+                
+                <h3 class="text-lg font-semibold text-slate-900 md:text-xl">Sumo Robot Championship</h3>
+              </div>
+              <p class="text-sm text-slate-900 md:max-w-xs md:text-left">Placed 3rd at the autonomious sumo robot competition in Tbilisi.</p>
+            </div>
+          </div>
+        </div>
+
+          <!-- 5: IOAA Bronze Medal -->
+        <div class="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-10">
+          <div class="text-center md:text-right md:pr-10">
+            <div class="mx-auto inline-flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-white bg-white px-6 py-6 text-center shadow-lg shadow-black/20 backdrop-blur md:items-end md:text-right transition-all duration-300 hover:shadow-2xl hover:border-white/40">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-800">2023 August</p>
+              <div class="flex flex-col items-center gap-3 md:flex-row-reverse md:items-center md:justify-end md:gap-3">
+                <img src = ioaa.png class="h-auto w-20">
+                <h3 class="text-lg font-semibold text-violet-800 md:text-xl">IOAA Bronze Medal</h3>
+              </div>
+              <p class="text-sm text-slate-700 md:max-w-xs md:text-right">Won bronze at the International Olympiad on Astronomy and Astrophysics in Poland.</p>
+            </div>
+          </div>
+          <div class="relative flex items-center justify-center py-6 md:py-0">
+            <div class="hidden md:block absolute right-full top-1/2 h-px w-20 -translate-y-1/2 bg-violet-300/60"></div>
+            <span class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-slate-950 bg-violet-400 text-2xl font-semibold text-white shadow-lg shadow-violet-400/40">5</span>
+            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 z-10 h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 right-full -translate-x-3">Photo</div>
+            <div class="hidden md:block absolute left-full top-1/2 h-px w-6 -translate-y-1/2 bg-violet-300/60"></div>
+          </div>
+          <div class="hidden md:block"></div>
+        </div>
+
+          <!-- 4: IPhO Silver Medal -->
+        <div class="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-10">
+          <div class="hidden md:block"></div>
+          <div class="relative flex items-center justify-center py-6 md:py-0">
+            <div class="hidden md:block absolute right-full top-1/2 h-px w-6 -translate-y-1/2 bg-orange-300/60"></div>
+            <span class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-slate-950 bg-orange-400 text-2xl font-semibold text-white shadow-lg shadow-orange-400/40">4</span>
+            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 z-10 h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 left-full translate-x-3">Photo</div>
+            <div class="hidden md:block absolute left-full top-1/2 h-px w-20 -translate-y-1/2 bg-orange-300/60"></div>
+          </div>
+          <div class="text-center md:text-left md:pl-10">
+            <div class="mx-auto inline-flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white px-6 py-6 text-center shadow-lg shadow-black/20 backdrop-blur md:items-start md:text-left transition-all duration-300 hover:shadow-2xl hover:border-white/40">
+              <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 md:hidden">Photo</div>
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-800">2023 July</p>
+              <div class="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-start md:gap-3">
+                <img src="ipho.png" alt="eupho logo" class="w-20 h-auto">
+                <h3 class="text-lg font-semibold text-orange-700 md:text-xl">IPhO Silver Medal</h3>
+              </div>
+              <p class="text-sm text-slate-700 md:max-w-xs md:text-left">Earned silver at the International Physics Olympiad in Tokyo.</p>
+            </div>
+          </div>
+        </div>
+
+          <!-- 3: WRO National Winner -->
+        <div class="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-10">
+          <div class="text-center md:text-right md:pr-10">
+            <div class="mx-auto inline-flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white px-6 py-6 text-center shadow-lg shadow-black/20 backdrop-blur md:items-end md:text-right transition-all duration-300 hover:shadow-2xl hover:border-white/40">
+              <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 md:hidden">Photo</div>
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-800">2023 June</p>
+              <div class="flex flex-col items-center gap-3 md:flex-row-reverse md:items-center md:justify-end md:gap-3">
+                <span class="hidden h-10 w-10 items-center justify-center rounded-full bg-emerald-400/10 text-emerald-300 md:flex">
+                  <img src="wro.webp" alt="eupho logo" class="w-20 h-auto">
+                </span>
+                <h3 class="text-lg font-semibold text-emerald-700 md:text-xl">WRO National Winner</h3>
+              </div>
+              <p class="text-sm text-slate-700 md:max-w-xs md:text-right">Won the national robotics competition in Georgia.</p>
+            </div>
+          </div>
+          <div class="relative flex items-center justify-center py-6 md:py-0">
+            <div class="hidden md:block absolute right-full top-1/2 h-px w-20 -translate-y-1/2 bg-emerald-300/60"></div>
+            <span class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-slate-950 bg-emerald-400 text-2xl font-semibold text-white shadow-lg shadow-emerald-400/40">3</span>
+            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 z-10 h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 right-full -translate-x-3">Photo</div>
+            <div class="hidden md:block absolute left-full top-1/2 h-px w-6 -translate-y-1/2 bg-emerald-300/60"></div>
+          </div>
+          <div class="hidden md:block"></div>
+        </div>
+
+          <!-- 2: IYPT National Winner -->
+        <div class="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-10">
+          <div class="hidden md:block"></div>
+          <div class="relative flex items-center justify-center py-6 md:py-0">
+            <div class="hidden md:block absolute right-full top-1/2 h-px w-6 -translate-y-1/2 bg-amber-300/60"></div>
+            <span class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-slate-950 bg-amber-400 text-2xl font-semibold text-white shadow-lg shadow-amber-400/40">2</span>
+            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 z-10 h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 left-full translate-x-3">Photo</div>
+            <div class="hidden md:block absolute left-full top-1/2 h-px w-20 -translate-y-1/2 bg-amber-300/60"></div>
+          </div>
+          <div class="text-center md:text-left md:pl-10">
+            <div class="mx-auto inline-flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white px-6 py-6 text-center shadow-lg shadow-black/20 backdrop-blur md:items-start md:text-left transition-all duration-300 hover:shadow-2xl hover:border-white/40">
+              <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 md:hidden">Photo</div>
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-800">2023 March</p>
+              <div class="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-start md:gap-3">
+                <span class="hidden h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-amber-300 md:flex">
+                  <img src="iypt.png" alt="eupho logo" class="w-20 h-auto">
+                </span>
+                <h3 class="text-lg font-semibold text-amber-700 md:text-xl">IYPT National Winner</h3>
+              </div>
+              <p class="text-sm text-slate-700 md:max-w-xs md:text-left">Led the national team to victory in the physics tournament.</p>
+            </div>
+          </div>
+        </div>
+
+          <!-- 1: National Mathematics Olympiad -->
+        <div class="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-10">
+          <div class="text-center md:text-right md:pr-10">
+            <div class="mx-auto inline-flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white px-6 py-6 text-center shadow-lg shadow-black/20 backdrop-blur md:items-end md:text-right transition-all duration-300 hover:shadow-2xl hover:border-white/40">
+              <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 md:hidden">Photo</div>
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-800">2022 April</p>
+              <div class="flex flex-col items-center gap-3 md:flex-row-reverse md:items-center md:justify-end md:gap-3">
+                <img src="imo.jpeg" alt="eupho logo" class="w-20 h-auto">
+                <h3 class="text-lg font-semibold text-sky-700 md:text-xl">National Mathematics Olympiad</h3>
+              </div>
+              <p class="text-sm text-slate-700 md:max-w-xs md:text-right">Ranked 10 in Georgia among 1000+ contestants.</p>
+            </div>
+          </div>
+          <div class="relative flex items-center justify-center py-6 md:py-0">
+            <div class="hidden md:block absolute right-full top-1/2 h-px w-20 -translate-y-1/2 bg-sky-400/60"></div>
+            <span class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-slate-950 bg-sky-500 text-2xl font-semibold text-white shadow-lg shadow-sky-500/30">1</span>
+            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 z-10 h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-200 right-full -translate-x-3">Photo</div>
+            <div class="hidden md:block absolute left-full top-1/2 h-px w-6 -translate-y-1/2 bg-sky-400/60"></div>
+          </div>
+          <div class="hidden md:block"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main>
+<footer class="mt-24 border-t">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500">
+    <p>© <span id="year"></span> Dachi Tchotashvili. All rights reserved.</p>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>

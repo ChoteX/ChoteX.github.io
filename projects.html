@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — My Portfolio</title>
+  <meta name="description" content="List of projects">
+  <link rel="icon" href="data:,">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-900">
+<header class="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="font-semibold text-lg tracking-tight">My Portfolio</a>
+      <nav class="flex items-center gap-1" aria-label="Primary">
+        <a href="index.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-400">Home</a>
+        <a href="about.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-400">About</a>
+        <a href="projects.html" class="nav-link px-3 py-2 rounded-xl text-sm font-medium hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400">Projects</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<script>
+  // Add 'aria-current="page"' and active styles based on current file
+  (function () {{
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(a => {{
+      if (a.getAttribute('href') === path) {{
+        a.classList.add('bg-brand-600','text-white');
+        a.setAttribute('aria-current','page');
+      }}
+    }});
+  }})();
+</script>
+
+<main class="max-w-6xl mx-auto px-4 py-16">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-extrabold tracking-tight">Projects</h1>
+      <p class="mt-2 text-gray-600">A selection of things I've built.</p>
+    </div>
+    <div>
+      <label class="sr-only" for="search">Search projects</label>
+      <input id="search" type="search" placeholder="Search projects..." class="w-64 rounded-2xl border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400">
+    </div>
+  </div>
+
+  <div id="grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Example project items -->
+    
+    <article class="project group rounded-2xl border hover:shadow hover:-translate-y-1 transition-all overflow-hidden" data-tags="web, ui">
+      <div class="aspect-video bg-gray-100 flex items-center justify-center">
+        <img src = "lara.png">
+      </div>
+      <div class="p-4">
+        <h2 class="font-semibold">L.A.R.A.</h2>
+        <p class="mt-2 text-sm text-gray-600">Laboratory Assistant Robot Arm</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+          <span class="px-2 py-1 rounded-full border">Mechatronics</span>
+          <span class="px-2 py-1 rounded-full border">Embedded Systmems</span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="project group rounded-2xl border hover:shadow hover:-translate-y-1 transition-all overflow-hidden" data-tags="web, ui">
+      <div class="aspect-video bg-gray-100 flex items-center justify-center">
+        <img src = "hydroponics.png">
+      </div>
+      <div class="p-4">
+        <h2 class="font-semibold">Smart Hydroponic System</h2>
+        <p class="mt-2 text-sm text-gray-600">Hydroponic Greenhouse model for Lattuce / live data streaming / AI health monitoring using leaf images</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+          <span class="px-2 py-1 rounded-full border">IoT</span>
+          <span class="px-2 py-1 rounded-full border">Biology</span>
+          <span class="px-2 py-1 rounded-full border">Deep Learning</span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="project group rounded-2xl border hover:shadow hover:-translate-y-1 transition-all overflow-hidden" data-tags="web, ui">
+      <div class="aspect-video bg-gray-100 flex items-center justify-center">
+        <img src = "sumo.jpg">
+      </div>
+      <div class="p-4">
+        <h2 class="font-semibold">Tekkai v1</h2>
+        <p class="mt-2 text-sm text-gray-600">Autonomious sumo robot / 500g category</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+          <span class="px-2 py-1 rounded-full border">Robotics</span>
+          <span class="px-2 py-1 rounded-full border">Mechanical design</span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="project group rounded-2xl border hover:shadow hover:-translate-y-1 transition-all overflow-hidden" data-tags="web, ui">
+      <div class="aspect-video bg-gray-100 flex items-center justify-center">
+        <img src = "iypt1.png">
+      </div>
+      <div class="p-4">
+        <h2 class="font-semibold">Magneto-Mechanical Oscillator</h2>
+        <p class="mt-2 text-sm text-gray-600">Independent research project on a complex oscillating system</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+          <span class="px-2 py-1 rounded-full border">Physics research</span>
+          <span class="px-2 py-1 rounded-full border">Nonlinear dynamics</span>
+          <span class="px-2 py-1 rounded-full border">Electromagnetism</span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="project group rounded-2xl border hover:shadow hover:-translate-y-1 transition-all overflow-hidden" data-tags="web, ui">
+      <div class="aspect-video bg-gray-100 flex items-center justify-center">
+        <img src = "disk.png">
+      </div>
+      <div class="p-4">
+        <h2 class="font-semibold">Unsinkable disk phenomena</h2>
+        <p class="mt-2 text-sm text-gray-600">Independent research project on an unintuitive hydrodynamic phenomena</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+          <span class="px-2 py-1 rounded-full border">Research</span>
+          <span class="px-2 py-1 rounded-full border">Thermodynamics</span>
+          <span class="px-2 py-1 rounded-full border">Hydraulic jump</span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="project group rounded-2xl border hover:shadow hover:-translate-y-1 transition-all overflow-hidden" data-tags="web, ui">
+      <div class="aspect-video bg-gray-100 flex items-center justify-center">
+        <img src = "wro.jpg">
+      </div>
+      <div class="p-4">
+        <h2 class="font-semibold">Pythagora v3</h2>
+        <p class="mt-2 text-sm text-gray-600">WRO Georgia championship winning robot. Full score best time: 0:59/2:00</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+          <span class="px-2 py-1 rounded-full border">Robotics</span>
+          <span class="px-2 py-1 rounded-full border">Control systems</span>
+          <span class="px-2 py-1 rounded-full border">LEGO</span>
+        </div>
+      </div>
+    </article>
+    
+  </div>
+</main>
+<footer class="mt-24 border-t">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500">
+    <p>© <span id="year"></span> Dachi Tchotashvili. All rights reserved.</p>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+
+<script>
+  // Simple client-side search
+  const input = document.getElementById('search');
+  const items = Array.from(document.querySelectorAll('.project'));
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    items.forEach(el => {
+      const text = el.textContent.toLowerCase();
+      el.style.display = text.includes(q) ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
