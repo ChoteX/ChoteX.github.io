@@ -1,52 +1,26 @@
-# Personal Website - Dachi Tchotashvili
+# Dachi Tchotashvili — Personal Website
 
-A 3-page personal portfolio built with the Tailwind CSS CDN. 
+Minimalist engineering portfolio for **Dachi Tchotashvili** (AI Engineering @ MBZUAI · Founder @ [Sherekilebi Labs](https://sherekilebi-labs.github.io/)).
 
-## Access
-- Page is available as a public GitHub page: https://chotex.github.io/index.html
+## Structure
 
-## Overview
-The site is organized around three static HTML pages (`index.html`, `about.html`, `projects.html`) and provides a brief academic/work journey of myself. Viewers will get an understanding of my skills and work interests as well as hobbies. The About page provides my academic history, detailed work experience, and notable awards. The Projects page features my completed works with imagery and tech tags so visitors can filter relevance at a glance.
+- **First Screen (`src/components/HeroSection.tsx`)**: Clean typographic introduction and direct links (Sherekilebi Labs, GitHub, LinkedIn, Email, CV).
+- **Integrated Projects View (`src/components/ProjectsSection.tsx`)**: Unified master–detail interface ordered by priority (`Embedded & C/C++`, `Artificial Intelligence`, `Data Science & Physics`) with inline accordion behavior on mobile, sticky detail pane on desktop, architecture diagrams (`src/components/SystemSchematic.tsx`), and lazy-loaded 3D `.glb` previews (`src/components/CadViewport.tsx`).
+- **Animated Experience & Honours Timeline (`src/components/TimelineSection.tsx`)**: Chronological scroll-animated timeline uniting research, leadership, academic milestones, and international olympiad medals with high-contrast institution logos.
+- **High-Level Skills (`src/components/SkillsSection.tsx`)**: Concise 12-item technical stack with recognizable vector logos.
 
-## Site Map
-- `index.html` — Introduction, featured project call-to-action, and global navigation.
-  - Primary navigation (sticky header) routes to all pages and uses `aria-current` for accessibility.
-- `about.html` — Education timeline, experience cards, and achievement timeline.
-  - Sections: Education, Experience, Achievements; each uses consistent card layouts.
-- `projects.html` — Grid of project summaries and tags.
-  - Includes client-side search to filter the grid in real time.
-- Global footer — Present on all pages with dynamic year and credits; links to Tailwind CSS, MBZUAI, and Komarovi STEM School resources.
+## Color Tokens
 
-## Design Notes
-- **Layout:** Tailwind utility classes enable quick iteration; responsive grid/stack transitions ensure readability on mobile and desktop.
-- **Color & Typography:** Custom `brand` palette (blue gradient) makes the color palette consistent and matches the MBZUAI logo palette. A gray background was selected for a professional look. The education, experience, and achievements sections have different color splashes for contrast.
-- **Interaction:** Sticky navigation, hover states, and accessible focus rings keep navigation obvious while keeping the website lightweight.
+- Background: `rgb(45, 45, 45)` (`#2d2d2d`)
+- Primary text: `#ddd2d0`
+- Slim accents: `#fb8472`
 
-## Screenshots
-- ## Home page
-  ![Home](screenshots/scr1.png)
-- ## Education timeline (about page)
-  ![About education timeline](screenshots/scr2.png)
-- ## Experience cards (about page)
-  ![Experience cards](screenshots/scr3.png)
-- ## Achievements (about page)
-  ![Achievements](screenshots/scr4.png)
-- ## Projects grid with search (projects page)
-  ![Projects grid with search](screenshots/scr5.png)
+## Commands
 
-## Credits
-- Tailwind CSS Play CDN configuration
-- MBZUAI logo
-- Komarovi STEM School logo
-- World Robot Olympiad logo
-- IPhO 2023 logo 
-- IYPT logo
-- Georgian Robotics Association logo
-- IOAA logo
+```bash
+npm install
+npm run dev
+npm run build
+```
 
-## Bonus Work
-
-- line - `<meta name="viewport" content="width=device-width, initial-scale=1">`
-makes the website adjust its contents depending on the viewing resolution
-
-- Created a public GitHub page
+Edit content in `src/data/portfolioData.ts`. Static assets live in `public/media/`.
