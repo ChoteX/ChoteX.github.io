@@ -6,8 +6,6 @@ import {
   type TimelineLogo,
 } from '../data/portfolioData';
 
-type TimelineFilter = 'all' | 'experience' | 'honour';
-
 function LogoBadge({ logo }: { logo: TimelineLogo }) {
   const bgClass =
     logo.bg === 'white'
@@ -20,11 +18,9 @@ function LogoBadge({ logo }: { logo: TimelineLogo }) {
 
   return (
     <div
-      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#ddd2d0]/20 ${bgClass} ${
-        logo.wide
-          ? 'h-16 w-36 sm:h-20 sm:w-44'
-          : 'h-16 w-16 sm:h-20 sm:w-20'
-      }`}
+      className={`flex h-16 w-32 shrink-0 items-center justify-center overflow-hidden rounded-lg border ${
+        logo.borderless ? 'border-transparent' : 'border-[#ddd2d0]/20'
+      } ${bgClass} sm:h-20 sm:w-44`}
     >
       <img
         src={logo.src}
@@ -36,7 +32,19 @@ function LogoBadge({ logo }: { logo: TimelineLogo }) {
   );
 }
 
-function TimelineRow({ item }: { item: TimelineItem }) {
+function getTimelineYear(period: string) {
+  return period.match(/\b(?:19|20)\d{2}\b/)?.[0] ?? period;
+}
+
+function TimelineRow({
+  item,
+  year,
+  showYear,
+}: {
+  item: TimelineItem;
+  year: string;
+  showYear: boolean;
+}) {
   const rowRef = useRef<HTMLLIElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -62,89 +70,98 @@ function TimelineRow({ item }: { item: TimelineItem }) {
   return (
     <li
       ref={rowRef}
-      className={`relative pl-8 transition-all duration-500 ease-out sm:pl-10 ${
-        visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      className={`grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 transition-opacity duration-500 ease-out motion-reduce:transition-none sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-8 ${
+        visible ? 'opacity-100' : 'opacity-0 motion-reduce:opacity-100'
       }`}
     >
-      <span
-        aria-hidden="true"
-        className={`absolute top-2 -left-[5px] h-2.5 w-2.5 rounded-full border transition-colors duration-500 ${
-          visible
-            ? 'border-[#fb8472] bg-[#fb8472]'
-            : 'border-[#ddd2d0]/40 bg-[#2d2d2d]'
-        }`}
-      />
+      <div className="relative text-right">
+        {showYear && (
+          <span className="absolute right-0 top-[55px] -translate-y-1/2 font-mono text-base font-semibold tracking-tight text-[#fb8472] sm:top-[61px] sm:text-2xl lg:top-[63px]">
+            {year}
+          </span>
+        )}
+      </div>
 
-      <div className="flex flex-col justify-between gap-5 rounded-xl border border-[#ddd2d0]/15 bg-[#232323] p-5 sm:flex-row sm:items-center sm:p-6">
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="font-mono text-xs text-[#fb8472]">
+      <div className="relative min-w-0 pl-5 sm:pl-8">
+        <span
+          aria-hidden="true"
+          className={`absolute left-0 top-[55px] z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border transition-colors duration-500 sm:top-[61px] lg:top-[63px] ${
+            visible
+              ? 'border-[#fb8472] bg-[#fb8472]'
+              : 'border-[#ddd2d0]/40 bg-[#2d2d2d]'
+          }`}
+        />
+
+        <div className="flex flex-col justify-between gap-5 rounded-xl border border-[#ddd2d0]/15 bg-[#232323] p-5 sm:flex-row sm:items-start sm:p-6">
+          <div className="min-w-0 flex-1">
+            <span className="block font-mono text-xs leading-4 text-[#fb8472]">
               {item.period}
             </span>
-            <span className="text-xs text-[#ddd2d0]/55">
-              {item.kind === 'experience' ? 'Experience' : 'Honour'}
-            </span>
+
+            <h3 className="mt-2 font-display text-lg font-semibold leading-tight text-[#f4eeec] sm:text-xl lg:text-2xl">
+              {item.title}
+            </h3>
+
+            {item.organizationUrl ? (
+              <a
+                href={item.organizationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-[#ddd2d0]/90 transition hover:text-[#fb8472]"
+              >
+                <span>{item.organization}</span>
+                <ArrowUpRight className="h-3 w-3 text-[#fb8472]" />
+              </a>
+            ) : (
+              <p className="mt-0.5 text-xs font-medium text-[#ddd2d0]/85">
+                {item.organization}
+              </p>
+            )}
+
+            <p className="mt-2.5 text-sm leading-relaxed text-[#ddd2d0]">
+              {item.summary}
+            </p>
           </div>
 
-          <h3 className="mt-1 font-display text-base font-semibold text-[#f4eeec] sm:text-lg">
-            {item.title}
-          </h3>
-
-          {item.organizationUrl ? (
-            <a
-              href={item.organizationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-[#ddd2d0]/90 transition hover:text-[#fb8472]"
-            >
-              <span>{item.organization}</span>
-              <ArrowUpRight className="h-3 w-3 text-[#fb8472]" />
-            </a>
-          ) : (
-            <p className="mt-0.5 text-xs font-medium text-[#ddd2d0]/85">
-              {item.organization}
-            </p>
-          )}
-
-          <p className="mt-2.5 text-sm leading-relaxed text-[#ddd2d0]">
-            {item.summary}
-          </p>
+          <LogoBadge logo={item.logo} />
         </div>
-
-        <LogoBadge logo={item.logo} />
       </div>
     </li>
   );
 }
 
 export function TimelineSection() {
-  const [filter, setFilter] = useState<TimelineFilter>('all');
   const listRef = useRef<HTMLOListElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  const visibleItems = TIMELINE_ITEMS.filter((item) =>
-    filter === 'all' ? true : item.kind === filter
-  );
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let frameId = 0;
+
     const updateProgress = () => {
-      const el = listRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const triggerY = window.innerHeight * 0.65;
-      const raw = (triggerY - rect.top) / Math.max(rect.height, 1);
-      const clamped = Math.max(0, Math.min(1, raw));
-      setScrollProgress(clamped);
+      if (frameId) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0;
+        const el = listRef.current;
+        const progress = progressRef.current;
+        if (!el || !progress) return;
+        const rect = el.getBoundingClientRect();
+        const triggerY = window.innerHeight * 0.65;
+        const raw = (triggerY - rect.top) / Math.max(rect.height, 1);
+        const clamped = Math.max(0, Math.min(1, raw));
+        progress.style.transform = `translateX(-0.5px) scaleY(${clamped})`;
+      });
     };
 
     updateProgress();
     window.addEventListener('scroll', updateProgress, { passive: true });
     window.addEventListener('resize', updateProgress);
     return () => {
+      if (frameId) window.cancelAnimationFrame(frameId);
       window.removeEventListener('scroll', updateProgress);
       window.removeEventListener('resize', updateProgress);
     };
-  }, [filter]);
+  }, []);
 
   return (
     <section
@@ -155,59 +172,41 @@ export function TimelineSection() {
       <div className="sticky top-14 z-30 border-b border-[#ddd2d0]/15 bg-[#2d2d2d]/95 py-4 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 sm:flex-row sm:items-end sm:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-[#f4eeec] sm:text-4xl lg:text-5xl">
-            Experience &amp; Honours
+            Timeline
           </h2>
-
-          <div
-            role="tablist"
-            aria-label="Filter timeline"
-            className="flex flex-wrap gap-5"
-          >
-            {[
-              { id: 'all' as const, label: 'All' },
-              { id: 'experience' as const, label: 'Experience' },
-              { id: 'honour' as const, label: 'Honours' },
-            ].map((tab) => {
-              const active = filter === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setFilter(tab.id)}
-                  className={`border-b-2 pb-1 text-sm transition ${
-                    active
-                      ? 'border-[#fb8472] font-medium text-[#f4eeec]'
-                      : 'border-transparent text-[#ddd2d0]/75 hover:text-[#ddd2d0]'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
         </div>
       </div>
 
       <div className="mx-auto mt-8 max-w-7xl px-5 sm:px-8">
-        <div className="relative max-w-5xl">
+        <div className="relative max-w-6xl">
           {/* Base Spine */}
           <div
             aria-hidden="true"
-            className="absolute top-2 bottom-2 left-0 w-px bg-[#ddd2d0]/20"
+            className="absolute top-7 bottom-2 left-[calc(3.5rem+0.75rem)] w-px bg-[#ddd2d0]/20 sm:left-[calc(7rem+2rem)]"
           />
           {/* Animated Scroll Progress Spine */}
           <div
+            ref={progressRef}
             aria-hidden="true"
-            style={{ height: `${Math.round(scrollProgress * 100)}%` }}
-            className="absolute top-2 left-0 w-[2px] -translate-x-[0.5px] bg-[#fb8472] transition-[height] duration-150 ease-out"
+            className="absolute top-7 bottom-2 left-[calc(3.5rem+0.75rem)] w-[2px] origin-top bg-[#fb8472] sm:left-[calc(7rem+2rem)]"
           />
 
-          <ol ref={listRef} className="space-y-6">
-            {visibleItems.map((item) => (
-              <TimelineRow key={item.id} item={item} />
-            ))}
+          <ol ref={listRef} className="space-y-8 sm:space-y-10">
+            {TIMELINE_ITEMS.map((item, index) => {
+              const year = getTimelineYear(item.period);
+              const previousYear = index > 0
+                ? getTimelineYear(TIMELINE_ITEMS[index - 1].period)
+                : null;
+
+              return (
+                <TimelineRow
+                  key={item.id}
+                  item={item}
+                  year={year}
+                  showYear={year !== previousYear}
+                />
+              );
+            })}
           </ol>
         </div>
       </div>

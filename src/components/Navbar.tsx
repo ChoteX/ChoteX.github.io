@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
 
 const NAV_LINKS = [
+  { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
   { label: 'Timeline', href: '#timeline' },
   { label: 'Skills', href: '#skills' },

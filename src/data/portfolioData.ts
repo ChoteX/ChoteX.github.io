@@ -21,6 +21,17 @@ export interface ProjectImage {
   caption: string;
 }
 
+export interface ProjectPresentation {
+  src: string;
+  label: string;
+  slideCount: number;
+}
+
+export interface ProjectDetailSection {
+  title: string;
+  items: string[];
+}
+
 export interface ProjectItem {
   id: string;
   icon: ProjectIconId;
@@ -31,6 +42,8 @@ export interface ProjectItem {
   details: string[];
   tags: string[];
   images?: ProjectImage[];
+  presentationPdf?: ProjectPresentation;
+  detailSections?: ProjectDetailSection[];
   cadModel?: {
     src: string;
     label: string;
@@ -49,13 +62,12 @@ export interface TimelineLogo {
   src: string;
   alt: string;
   bg: 'white' | 'dark' | 'cream' | 'none';
-  wide?: boolean;
+  borderless?: boolean;
 }
 
 export interface TimelineItem {
   id: string;
   period: string;
-  kind: 'experience' | 'honour';
   title: string;
   organization: string;
   organizationUrl?: string;
@@ -64,20 +76,20 @@ export interface TimelineItem {
 }
 
 export type SkillIconId =
-  | 'cpp'
   | 'embedded'
-  | 'robotics'
+  | 'isaac-sim'
   | 'pytorch'
-  | 'sql'
-  | 'cad'
+  | 'fusion'
+  | 'blender'
+  | 'ansys'
   | 'kicad'
-  | 'linux'
-  | 'matlab';
+  | 'matlab'
+  | 'raspberry-pi'
+  | 'mqtt';
 
 export interface HighLevelSkill {
   id: SkillIconId;
   name: string;
-  scope: string;
 }
 
 export interface Profile {
@@ -101,22 +113,43 @@ export const PROFILE: Profile = {
 };
 
 // Strictly sorted by most recent first
-export const PROJECTS: ProjectItem[] = [
+const ALL_PROJECTS: ProjectItem[] = [
   {
     id: 'lara',
     icon: 'bot',
-    year: 'Aug 2026',
-    title: 'L.A.R.A. — 6-DoF Robot Arm',
+    year: 'Aug 2026 - In development',
+    title: 'Lab Assistant Robot Arm (L.A.R.A.)',
     context: 'MBZUAI Robotics Research & Sherekilebi Labs',
     summary:
-      'Six-axis robotic manipulator combining NVIDIA Isaac Sim kinematic modeling, 600 DPI AprilTag fiducial pose tracking, a passive cam-lock tool swapper, and stochastic joint-error research.',
+      'Research case study in simulation and robot-control software for low-cost robotic actuators, built around a modular 6-DoF manipulator in NVIDIA Isaac Sim. Its mechanical structure, electronics, actuators, and passive tool changer were prototyped at Sherekilebi Labs as the physical platform for the study.',
     details: [
-      'Modeled full 6-DoF joint kinematics and internal cable routing in NVIDIA Isaac Sim; assembled and bench-tested the v1 physical arm joint-by-joint and fabricated the updated v2 structural architecture.',
-      'Built a Python generation and verification pipeline producing 12 exact 20.00 mm tagStandard41h12 joint fiducials (verified across 4 orientations with zero bit errors) to measure real link pose against commanded trajectories.',
-      'Engineered a zero-actuator 50 mm pull-stud mechanical tool swapper using rail insertion and cam-driven radial locking dogs.',
-      'Designing trajectory experiments to model stochastic gear-backlash and tracking error for feedforward target compensation.',
+      'Research and hardware details are grouped below.',
+    ],
+    detailSections: [
+      {
+        title: 'Research case study',
+        items: [
+          'Built the full 6-DoF kinematic model, internal cable routing, and trajectory experiments in NVIDIA Isaac Sim for a low-cost robotic actuator platform.',
+          'Developed Python tooling that generates and verifies 600 DPI AprilTag joint fiducials, then compares commanded motion with measured link pose.',
+          'Designing robot-control experiments to characterize stochastic gear backlash and tracking error for feedforward target compensation.',
+        ],
+      },
+      {
+        title: 'Sherekilebi Labs hardware platform',
+        items: [
+          'Prototyped the mechanical links, joints, electronics, actuators, internal cable routing, and passive cam-lock tool changer at Sherekilebi Labs.',
+          'Bench-tested the v1 arm joint by joint and fabricated the updated v2 structural architecture used as the physical research case-study platform.',
+        ],
+      },
     ],
     tags: ['Robotics', 'Isaac Sim', 'AprilTag Vision', 'Python', '6-DoF Kinematics', 'Fusion 360'],
+    images: [
+      {
+        src: './media/Lara icon.png',
+        alt: 'L.A.R.A. six-axis robot arm illustration',
+        caption: 'L.A.R.A. six-axis robot arm concept with the passive tool-changing gripper.',
+      },
+    ],
     cadModel: {
       src: './media/models/lara.glb',
       label: 'L.A.R.A. 6-Axis Assembly',
@@ -129,7 +162,7 @@ export const PROJECTS: ProjectItem[] = [
     id: 'active-spoiler',
     icon: 'cpu',
     year: 'Jul 2026',
-    title: 'Dual-ESP32 Active Aero Control System',
+    title: 'Active Aero System Prototype',
     context: 'Embedded C++ · Real-Time Compute Partitioning',
     summary:
       'Distributed dual-ESP32 C++ software architecture partitioning sensor fusion, inverse kinematics, and telemetry away from hard real-time motor control to achieve deterministic 1 kHz response and 0.022° angular accuracy on a split active rear wing.',
@@ -139,13 +172,13 @@ export const PROJECTS: ProjectItem[] = [
       'Designed a low-overhead 50 Hz CRC-checked binary UART protocol between the two microcontrollers with a 300 ms hardware watchdog that immediately disarms all four drives upon encoder dropout or link timeout.',
       'Calibrated pitch air-braking and roll-compensated cornering curves against Ansys CFD aerodynamic load models (300 ± 20 N drag force at 150 km/h, 60° deployment).',
     ],
-    tags: ['C++', 'Dual ESP32', '1 kHz PID', 'Inverse Kinematics', 'UART CRC', 'PlatformIO'],
+    tags: ['CFD Analysis', 'C++', 'ESP32', 'PID', 'Inverse Kinematics', 'UART CRC', 'PlatformIO'],
     images: [
       {
-        src: './media/spoiler-complete-circuit.webp',
-        alt: 'Dual-ESP32 control electronics, motor drivers, and four geared DC actuator assemblies on the workbench',
+        src: './media/Spoiler Simulation.png',
+        alt: 'CFD airflow simulation focused on the active rear spoiler',
         caption:
-          'Bench integration of the partitioned dual-ESP32 controller stack (Node N1 & Node N2), quad H-bridge stage, and four motorized four-bar actuator units.',
+          'CFD airflow simulation showing the active rear spoiler and the surrounding flow field.',
       },
     ],
     schematicId: 'spoiler',
@@ -230,7 +263,7 @@ export const PROJECTS: ProjectItem[] = [
     id: 'tekkai-2',
     icon: 'swords',
     year: 'Jun 2026',
-    title: 'Tekkai 2.0 — Autonomous Sumo Robot',
+    title: 'Tekkai v2 — Autonomous Sumo Robot',
     context: 'ESP32 C++ · Deterministic State Machine',
     summary:
       'Four-wheel-drive autonomous combat robot running target-priority ESP32 C++ firmware with tri-ultrasonic pursuit, debounced IR ring-edge evasion, and onboard Wi-Fi telemetry.',
@@ -315,7 +348,7 @@ export const PROJECTS: ProjectItem[] = [
     title: 'Pythagora v3 — WRO Autonomous Robot',
     context: 'World Robot Olympiad · National 1st & World Bronze',
     summary:
-      'High-speed autonomous competition robot using multi-sensor PID trajectory tracking and junction state machines to complete a full-score run in 0:59 out of 2:00.',
+      'High-speed autonomous competition robot built with LEGO Mindstorms robotics kit and programmed in RobotC. Uses multi-sensor PID trajectory tracking and junction state machines to complete a full-score run in 0:59 out of 2:00.',
     details: [
       'Won 1st Place Overall at the Georgian National Championship and earned an International Bronze Medal representing Georgia at WRO 2023.',
     ],
@@ -338,7 +371,7 @@ export const PROJECTS: ProjectItem[] = [
     summary:
       'MATLAB numerical simulation of coupled Euler–Bernoulli cantilever mechanics and nonlinear magnetic dipole interactions, validated against optical phase-space tracking.',
     details: [
-      'Modeled frequency-locking, bifurcation thresholds, and energy transfer regimes between coupled elastic-magnetic oscillators.',
+      'Modeled frequency-locking, bending dynamics, and energy transfer regimes between coupled elastic-magnetic oscillators.',
     ],
     tags: ['MATLAB', 'Differential Equations', 'Nonlinear Dynamics', 'Physics'],
     images: [
@@ -348,6 +381,11 @@ export const PROJECTS: ProjectItem[] = [
         caption: 'Experimental apparatus and optical phase-space tracking setup.',
       },
     ],
+    presentationPdf: {
+      src: './media/magneto-mechanical-oscillator-presentation.pdf',
+      label: 'Magneto-Mechanical Oscillator slide deck',
+      slideCount: 41,
+    },
   },
   {
     id: 'unsinkable-disk',
@@ -368,6 +406,11 @@ export const PROJECTS: ProjectItem[] = [
         caption: 'Radial film flow and circular hydraulic jump keeping a heavy disk afloat.',
       },
     ],
+    presentationPdf: {
+      src: './media/unsinkable-disk-presentation.pdf',
+      label: 'Unsinkable Disk slide deck',
+      slideCount: 38,
+    },
   },
   {
     id: 'smart-hydroponics',
@@ -393,18 +436,54 @@ export const PROJECTS: ProjectItem[] = [
     schematicId: 'hydroponics',
     githubUrl: 'https://github.com/ChoteX/Hydroponic-Greenhouse',
   },
+  {
+    id: 'sherekilebi-makerspace',
+    icon: 'server',
+    year: '2026 — in development',
+    title: 'Sherekilebi Labs Makerspace',
+    context: 'Smart makerspace & robotics lab · Sherekilebi Labs',
+    summary:
+      'An evolving lab system that brings a Linux hub server, Kinect 360 sensing, and door security into one shared backbone for safer, more discoverable robotics work.',
+    details: [
+      'Runs the Ubuntu hub, self-hosted services, GPU inference node, and internal tooling as one dependable foundation for the lab.',
+      'Uses the Kinect 360 RGB-D and microphone stack to support spatial interaction, voice localization, and hands-free automations around the workspace.',
+      'Adds infrared beam-break and MPU6050 tamper sensing to monitor access and protect equipment while the makerspace is unattended.',
+      'Still under development as the physical space, infrastructure, and automation layer continue to converge into a single robotics lab.',
+    ],
+    tags: ['Linux', 'Kinect 360', 'C', 'ESP32', 'Docker', 'Robotics Lab'],
+    images: [
+      {
+        src: './media/Lab model.png',
+        alt: 'Concept model of the Sherekilebi Labs makerspace and robotics workbenches',
+        caption: 'Lab model for the Sherekilebi Labs makerspace and robotics workspace.',
+      },
+    ],
+    githubUrl: 'https://github.com/Sherekilebi-labs/Door-Security-System',
+    sherekilebiLab: true,
+  },
 ];
+
+export const PROJECTS: ProjectItem[] = [
+  'lara',
+  'active-spoiler',
+  'tekkai-2',
+  'sherekilebi-makerspace',
+  'pythagora-wro',
+  'smart-hydroponics',
+  'magneto-oscillator',
+  'unsinkable-disk',
+].map((id) => ALL_PROJECTS.find((project) => project.id === id))
+  .filter((project): project is ProjectItem => Boolean(project));
 
 export const TIMELINE_ITEMS: TimelineItem[] = [
   {
     id: 'mbzuai-research',
     period: 'Aug 2026 – Present',
-    kind: 'experience',
     title: 'Undergraduate Robotics Researcher',
-    organization: 'Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)',
-    organizationUrl: 'https://mbzuai.ac.ae',
+    organization: 'MBZUAI · Abu Dhabi, UAE',
+    organizationUrl: 'https://mbzuai.ac.ae/',
     summary:
-      'Supervised research under Prof. Jorge A. Amador Herrera on modular 6-DoF robotic manipulation, kinematic simulation in Isaac Sim, and stochastic tracking-error compensation.',
+      'Under Prof. Jorge A. Amador Herrera, research focuses on simulation and robot-control software for low-cost robotic actuators: modeling a modular 6-DoF manipulator in NVIDIA Isaac Sim, comparing commanded and measured motion, and studying stochastic tracking error. L.A.R.A. robot arm is used as a case study to perform Sim-to-real tests',
     logo: {
       src: './media/mbzlogo.webp',
       alt: 'MBZUAI',
@@ -414,28 +493,39 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
   {
     id: 'sherekilebi-founder',
     period: 'Jun 2026 – Present',
-    kind: 'experience',
-    title: 'Founder',
+    title: 'Founded Sherekilebi Labs',
     organization: 'Sherekilebi Labs',
     organizationUrl: 'https://sherekilebi-labs.github.io/',
     summary:
       'Built an independent peer-run robotics and hardware prototyping lab from scratch in Tbilisi equipped with 3D fabrication, SMD electronics benches, and self-hosted Linux/GPU infrastructure.',
     logo: {
-      src: './media/sherekilebi-logo.png',
+      src: './media/tsatmfreni.png',
       alt: 'Sherekilebi Labs',
       bg: 'cream',
-      wide: true,
+    },
+  },
+  {
+    id: 'cupexs-2026',
+    period: 'Jun 2026',
+    title: 'Experimental Platform Development',
+    organization: 'CupExS · Cup of Experimental Science',
+    organizationUrl: 'https://cupexs.com/about-cupexs.html',
+    summary:
+      'Built five standardized drag-racer experiment kits for CupExS, a science tournament focused on hands-on investigation. The platform combined ESP32 motor control, optical timing gates, and a motor dynamometer to support drivetrain and gear-ratio experiments.',
+    logo: {
+      src: './media/cupexs-logo.webp',
+      alt: 'CupExS',
+      bg: 'white',
     },
   },
   {
     id: 'mbzuai-degree',
     period: '2025 – Present',
-    kind: 'experience',
     title: 'B.Sc. in Artificial Intelligence Engineering',
     organization: 'MBZUAI · Abu Dhabi, UAE',
     organizationUrl: 'https://mbzuai.ac.ae',
     summary:
-      'HH Sheikh Tahnoon Bin Zayed Merit Scholar (GPA 3.69 / 4.00). Treasurer and Event Organizer of the MBZUAI Robotics Club.',
+      'HH Sheikh Tahnoon Bin Zayed Merit Scholar. Treasurer and Event Organizer of the MBZUAI Robotics Club.',
     logo: {
       src: './media/mbzlogo.webp',
       alt: 'MBZUAI',
@@ -445,37 +535,35 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
   {
     id: 'eupho-committee',
     period: '2024',
-    kind: 'experience',
-    title: 'Academic Committee Member & Trainers Olympiad Gold',
-    organization: '8th European Physics Olympiad (EuPhO) & IMPACT',
+    title: 'Academic Committee Member',
+    organization: '8th European Physics Olympiad (EuPhO)',
+    organizationUrl: 'https://eupho.ee/',
     summary:
-      'Collaborated with 15 international professors to author and calibrate the EuPhO 2024 piezoelectricity experimental exam (280 lab kits assembled); awarded Gold at the International Physics Trainers Olympiad.',
+      'Collaborated with 15 international professors to author and calibrate the EuPhO 2024 piezoelectricity experimental exam, with 280 lab kits assembled.',
     logo: {
       src: './media/EuPho-Logo-03-2048x780.png',
       alt: 'European Physics Olympiad',
       bg: 'dark',
-      wide: true,
     },
   },
   {
     id: 'gra-sumo',
     period: '2024',
-    kind: 'honour',
     title: '3rd Place — National Sumo Robot Championship',
     organization: 'Georgian Robotics Association (Robo Battle)',
+    organizationUrl:'https://gra.ge/',
     summary:
-      'Earned national podium finish in the 500 g autonomous sumo robotics division in Tbilisi; also served as proof grader for 212+ contestants at EGMO 2024.',
+      'Earned national podium finish in the 500 g autonomous sumo robotics division in Tbilisi;',
     logo: {
       src: './media/gralogo-text.png',
       alt: 'Georgian Robotics Association',
       bg: 'none',
-      wide: true,
+      borderless: true,
     },
   },
   {
     id: 'komarovi-stem',
     period: '2023 – 2025',
-    kind: 'experience',
     title: 'Head of STEM Lab & Online STEM School Administrator',
     organization: 'Komarovi STEM Laboratory & Online STEM School',
     organizationUrl: 'https://komarovi.edu.ge',
@@ -485,30 +573,16 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
       src: './media/stemschool.png',
       alt: 'Online STEM School',
       bg: 'none',
-      wide: true,
+      borderless: true,
     },
   },
-  {
-    id: 'ipho-medals',
-    period: '2021 – 2023',
-    kind: 'honour',
-    title: '2× Silver & 1× Bronze Medal — Int’l Physics Olympiad',
-    organization: 'International Physics Olympiad (IPhO)',
-    summary:
-      'Represented Georgia three consecutive years, earning Silver Medals in Tokyo (2023) and 2022, and a Bronze Medal in 2021.',
-    logo: {
-      src: './media/ipho.png',
-      alt: 'International Physics Olympiad',
-      bg: 'white',
-      wide: true,
-    },
-  },
+  
   {
     id: 'wro-medal',
     period: '2023',
-    kind: 'honour',
     title: 'National Overall Winner & International Bronze Medal',
     organization: 'World Robot Olympiad (WRO)',
+    organizationUrl:'https://wro-association.org/',
     summary:
       '1st Place at the Georgian National Championship (0:59 / 2:00 full-score run) and International Bronze Medalist.',
     logo: {
@@ -518,96 +592,73 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
     },
   },
   {
-    id: 'nbpho-eupho',
+    id: 'ipho-medals',
     period: '2023',
-    kind: 'honour',
-    title: 'Gold Medal (3rd Overall) at NBPhO & Silver at EuPhO',
-    organization: 'Nordic-Baltic & European Physics Olympiads',
+    title: 'Int’l Physics Olympiad | Silver Medalist',
+    organization: 'International Physics Olympiad (IPhO)',
+    organizationUrl:'https://ipho-unofficial.org/',
     summary:
-      'Placed 3rd overall internationally with a Gold Medal at NBPhO 2023 and earned a Silver Medal at EuPhO 2023.',
+      'Represented Georgia three consecutive years, earning Silver Medals in Tokyo (2023) and 2022, and a Bronze Medal in 2021.',
     logo: {
-      src: './media/EuPho-Logo-03-2048x780.png',
-      alt: 'EuPhO',
-      bg: 'dark',
-      wide: true,
+      src: './media/ipho.png',
+      alt: 'International Physics Olympiad',
+      bg: 'white',
     },
   },
   {
-    id: 'iypt-stem',
+    id: 'iypt-competitor',
     period: '2023',
-    kind: 'honour',
-    title: '1st Place Nationally — IYPT Georgia & National STEM Competition',
-    organization: 'Young Physicists’ Tournament & National STEM Projects',
-    summary:
-      'Captained winning teams at both the Georgian Young Physicists’ Tournament (representing Georgia internationally at IYPT 2023) and the National STEM Engineering Championship.',
+    title: 'Presenter at IYPT 2023',
+    organization: 'International Young Physicists’ Tournament (IYPT)',
+    organizationUrl:'https://iypt.org/',
+    summary: 'Represented Georgia at IYPT 2023. Studied 8 open physics problems on IYPT problems list from 2019 to 2023.',
     logo: {
       src: './media/iypt.png',
       alt: 'International Young Physicists Tournament',
       bg: 'white',
-      wide: true,
-    },
-  },
-  {
-    id: 'ioaa-komarovi',
-    period: '2023',
-    kind: 'honour',
-    title: 'IOAA Bronze Medal & Komarovi Gold Medal Diploma',
-    organization: 'Int’l Olympiad on Astronomy & Astrophysics · Komarovi School №199',
-    summary:
-      'Won one of Georgia’s historic first Bronze Medals at IOAA (Poland) and graduated Komarovi Physics & Mathematics School with a 4.00 GPA, Ministry Gold Medal, and 1540 SAT (790 Math).',
-    logo: {
-      src: './media/ioaa.png',
-      alt: 'IOAA',
-      bg: 'white',
-      wide: true,
     },
   },
 ];
 
 export const HIGH_LEVEL_SKILLS: HighLevelSkill[] = [
   {
-    id: 'cpp',
-    name: 'C / C++',
-    scope: 'Real-time control, firmware & systems',
-  },
-  {
     id: 'embedded',
-    name: 'Embedded Systems',
-    scope: 'ESP32, STM32, RTOS & hardware buses',
+    name: 'ESP-IDF',
   },
   {
-    id: 'robotics',
-    name: 'Robotics & Simulation',
-    scope: 'Kinematics, PID & NVIDIA Isaac Sim',
+    id: 'isaac-sim',
+    name: 'NVIDIA Isaac Sim',
   },
   {
     id: 'pytorch',
-    name: 'PyTorch & Vision',
-    scope: 'Deep learning, CNNs & OpenCV',
+    name: 'PyTorch',
   },
   {
-    id: 'sql',
-    name: 'SQL & Data Pipelines',
-    scope: 'SQLite, PostgreSQL & Parquet analytics',
+    id: 'fusion',
+    name: 'Fusion 360',
   },
   {
-    id: 'cad',
-    name: '3D CAD & CFD',
-    scope: 'Fusion 360 & Ansys simulation',
+    id: 'blender',
+    name: 'Blender',
+  },
+  {
+    id: 'ansys',
+    name: 'Ansys',
   },
   {
     id: 'kicad',
-    name: 'PCB Design',
-    scope: 'Multi-layer hardware layout in KiCad',
-  },
-  {
-    id: 'linux',
-    name: 'Linux & Docker',
-    scope: 'Self-hosted servers, networking & Git',
+    name: 'KiCad',
   },
   {
     id: 'matlab',
-    name: 'MATLAB & Physics',
-    scope: 'Numerical ODEs & experimental modeling',
+    name: 'MATLAB',
+  },
+  {
+    id: 'raspberry-pi',
+    name: 'Raspberry Pi',
+  },
+  {
+    id: 'mqtt',
+    name: 'MQTT',
   },
 ];

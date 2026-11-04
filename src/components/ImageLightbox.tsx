@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import { X } from 'lucide-react';
+import { useModal } from '../useModal';
 
 export interface LightboxItem {
   src: string;
@@ -11,39 +12,26 @@ export interface LightboxItem {
 interface ImageLightboxProps {
   item: LightboxItem | null;
   onClose: () => void;
+  returnFocus: HTMLElement | null;
 }
 
-export function ImageLightbox({ item, onClose }: ImageLightboxProps) {
-  useEffect(() => {
-    if (!item) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [item, onClose]);
+export function ImageLightbox({ item, onClose, returnFocus }: ImageLightboxProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  useModal({ isOpen: item !== null, onClose, dialogRef, closeRef, returnFocus });
 
   if (!item) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#2c2c2c]/90 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-[#2c2c2c]/90 p-4 backdrop-blur-sm sm:p-8"
       onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={item.title ?? item.alt}
     >
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={item.title ?? item.alt}
         className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-[#ddd2d0]/20 bg-[#232323] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -52,9 +40,10 @@ export function ImageLightbox({ item, onClose }: ImageLightboxProps) {
             {item.title ?? item.alt}
           </span>
           <button
+            ref={closeRef}
             type="button"
             onClick={onClose}
-            className="rounded-md p-1 text-[#ddd2d0]/80 transition hover:text-[#fb8472]"
+            className="rounded-md p-2 text-[#ddd2d0]/80 transition-colors hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
             aria-label="Close image preview"
           >
             <X className="h-4 w-4" />

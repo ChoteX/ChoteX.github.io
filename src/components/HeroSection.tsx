@@ -31,8 +31,14 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative overflow-x-clip border-b border-[#ddd2d0]/15 pt-[116px] pb-12 sm:pt-[124px] sm:pb-16 lg:pt-[124px] lg:pb-0"
+      className="relative overflow-x-clip border-b border-[#ddd2d0]/15 bg-gradient-to-b from-[#181818] via-[#222222] to-[#2d2d2d] pt-[116px] pb-12 sm:pt-[124px] sm:pb-16 lg:pt-[124px] lg:pb-0"
     >
+      {/* Subtle CAD / engineering grid background */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(221,210,208,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(221,210,208,0.035)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]"
+        aria-hidden="true"
+      />
+
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col lg:flex-row lg:items-stretch lg:-mt-[245px]">
           {/* Title column: bottom-right corner sits directly above the start of "I do" */}
@@ -78,7 +84,7 @@ export function HeroSection() {
                 playsInline
                 width={2560}
                 height={1520}
-                className="h-full w-full object-contain select-none pointer-events-none"
+                className="h-full w-full object-contain select-none pointer-events-none mix-blend-screen"
               >
                 <source
                   src="./media/lara-cube-flip-safari.mov"
@@ -119,9 +125,9 @@ export function HeroSection() {
                     e.preventDefault();
                     document.getElementById('lara')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="group inline-flex items-center gap-2 rounded-full border border-[#fb8472]/60 bg-[#242424]/95 px-5 py-2.5 font-display text-sm sm:text-base font-semibold text-[#f4eeec] shadow-lg shadow-black/50 backdrop-blur-md transition hover:border-[#fb8472] hover:bg-[#2d2d2d] hover:text-[#fb8472] whitespace-nowrap"
+                  className="group inline-flex items-center gap-2 full border border-[#fb8472]/60 bg-[#242424]/95 px-5 py-2.5 font-display text-sm sm:text-base font-semibold text-[#f4eeec] shadow-lg shadow-black/50 backdrop-blur-md transition hover:border-[#fb8472] hover:bg-[#2d2d2d] hover:text-[#fb8472] whitespace-nowrap"
                 >
-                  <span>explore project L.A.R.A.</span>
+                  <span>Explore project L.A.R.A.</span>
                   <ArrowUpRight className="h-4.5 w-4.5 text-[#fb8472] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
 
