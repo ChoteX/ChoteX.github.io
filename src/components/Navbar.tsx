@@ -24,7 +24,7 @@ export function Navbar() {
 
         <nav
           aria-label="Primary navigation"
-          className="hidden items-center gap-7 md:flex"
+          className="hidden items-center gap-7 lg:flex"
         >
           {NAV_LINKS.map((link) => (
             <a
@@ -61,7 +61,8 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((prev) => !prev)}
-          className="p-1.5 text-[#ddd2d0] transition hover:text-[#fb8472] md:hidden"
+          className="flex h-11 w-11 items-center justify-center text-[#ddd2d0] transition hover:text-[#fb8472] lg:hidden"
+          aria-controls="mobile-navigation"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
         >
@@ -70,14 +71,14 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-[#ddd2d0]/15 bg-[#232323] px-5 py-4 md:hidden">
+        <div id="mobile-navigation" className="absolute inset-x-0 top-full max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-[#ddd2d0]/15 bg-[#232323] px-5 py-4 lg:hidden">
           <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-sm text-[#ddd2d0] transition hover:text-[#fb8472]"
+                className="flex min-h-11 items-center text-sm text-[#ddd2d0] transition hover:text-[#fb8472]"
               >
                 {link.label}
               </a>

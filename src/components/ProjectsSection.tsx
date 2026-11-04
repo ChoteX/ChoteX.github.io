@@ -273,9 +273,9 @@ export function ProjectModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
-        className="relative z-10 flex max-h-[calc(100vh-1.5rem)] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-[#ddd2d0]/18 bg-[#242424] shadow-[0_32px_100px_rgba(0,0,0,0.58)] motion-safe:animate-project-modal-in sm:max-h-[calc(100vh-3rem)]"
+        className="relative z-10 flex max-h-[calc(100dvh-1.5rem)] w-full min-w-0 max-w-6xl flex-col overflow-hidden rounded-2xl border border-[#ddd2d0]/18 bg-[#242424] shadow-[0_32px_100px_rgba(0,0,0,0.58)] motion-safe:animate-project-modal-in sm:max-h-[calc(100dvh-3rem)]"
       >
-        <div className="flex items-start justify-between gap-5 border-b border-[#ddd2d0]/15 px-5 py-5 sm:px-8 sm:py-6">
+        <div className="flex shrink-0 items-start justify-between gap-3 border-b border-[#ddd2d0]/15 px-4 py-4 sm:gap-5 sm:px-8 sm:py-6">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.08em] text-[#fb8472]">
               <span>{project.year}</span>
@@ -295,15 +295,15 @@ export function ProjectModal({
             type="button"
             onClick={onClose}
             aria-label="Close project details"
-            className="shrink-0 rounded-full border border-[#ddd2d0]/20 p-2 text-[#ddd2d0]/75 transition hover:border-[#fb8472]/60 hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#ddd2d0]/20 text-[#ddd2d0]/75 transition hover:border-[#fb8472]/60 hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="overflow-y-auto">
+        <div className="min-h-0 overflow-y-auto overscroll-contain">
           <div className="grid gap-7 p-5 sm:p-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
-            <div>
+            <div className="min-w-0">
               {project.presentationPdf ? (
                 <ProjectPresentationViewer presentation={project.presentationPdf} />
               ) : (
@@ -353,7 +353,7 @@ export function ProjectModal({
               )}
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className="max-w-2xl text-base leading-relaxed text-[#ddd2d0] sm:text-lg">
                 {project.summary}
               </p>

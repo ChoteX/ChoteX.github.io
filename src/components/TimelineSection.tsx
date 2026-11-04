@@ -92,7 +92,7 @@ function TimelineRow({
           }`}
         />
 
-        <div className="flex flex-col justify-between gap-5 rounded-xl border border-[#ddd2d0]/15 bg-[#232323] p-5 sm:flex-row sm:items-start sm:p-6">
+        <div className="flex flex-col justify-between gap-5 rounded-xl border border-[#ddd2d0]/15 bg-[#232323] p-5 lg:flex-row lg:items-start sm:p-6">
           <div className="min-w-0 flex-1">
             <span className="block font-mono text-xs leading-4 text-[#fb8472]">
               {item.period}

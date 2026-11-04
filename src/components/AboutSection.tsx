@@ -82,15 +82,15 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right Column: Cropped portrait of Dachiko.jpeg */}
+          {/* Profile portrait */}
           <div className="mx-auto w-full max-w-sm sm:max-w-md lg:col-span-5 lg:max-w-none">
             <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/40">
               <img
-                src="./media/dachiko-portrait.webp"
+                src="./media/dachiko updated.jpeg"
                 alt="Dachi Tchotashvili"
                 loading="lazy"
-                width={900}
-                height={1125}
+                width={1844}
+                height={2304}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>

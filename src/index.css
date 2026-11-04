@@ -25,6 +25,7 @@
   body {
     background-color: #2d2d2d;
     color: #ddd2d0;
+    overflow-wrap: break-word;
   }
 
   h1,
