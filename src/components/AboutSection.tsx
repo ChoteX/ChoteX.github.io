@@ -63,8 +63,8 @@ export function AboutSection() {
                 </div>
 
                 {/* Honor Text */}
-                <div className="min-w-0 flex-1 text-xs sm:text-sm leading-snug text-accent">
-                  <span className="font-bold text-accent">
+                <div className="min-w-0 flex-1 text-xs sm:text-sm leading-snug text-[#dcb36d]">
+                  <span className="font-bold text-[#f5c77e]">
                     2× Silver &amp; 1× Bronze Medalist
                   </span>
                   , International Physics Olympiad (IPhO 2023, 2022, 2021).{' '}
@@ -72,7 +72,7 @@ export function AboutSection() {
                     href="https://www.ipho-unofficial.org/countries/GEO/individual"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-0.5 font-medium underline decoration-accent/60 underline-offset-2 transition hover:text-ink-strong hover:decoration-ink-strong"
+                    className="inline-flex items-center gap-0.5 font-medium underline decoration-[#dcb36d]/60 underline-offset-2 transition hover:text-ink-strong hover:decoration-ink-strong"
                   >
                     <span>Official record</span>
                     <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />

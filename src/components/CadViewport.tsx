@@ -102,7 +102,7 @@ export function CadViewport({ src, label }: CadViewportProps) {
     keyLight.position.set(4, 7, 5);
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0x7a9f84, 0.85);
+    const rimLight = new THREE.DirectionalLight(0x93c5a3, 0.85);
     rimLight.position.set(-5, 3, -4);
     scene.add(rimLight);
 
