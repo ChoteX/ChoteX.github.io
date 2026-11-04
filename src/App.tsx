@@ -28,12 +28,12 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#2d2d2d] text-[#ddd2d0] selection:bg-[#fb8472]/25 selection:text-[#fff6f4]">
+    <div className="min-h-screen bg-canvas text-ink selection:bg-accent/25 selection:text-ink-strong">
       <div inert={activeProject !== null || lightboxItem !== null}>
         <Navbar />
 
         <main>
-          <HeroSection />
+          <HeroSection onOpenProject={openProject} />
           <AboutSection />
           <ProjectsSection onOpenProject={openProject} />
           <TimelineSection />

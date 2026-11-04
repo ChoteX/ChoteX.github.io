@@ -11,15 +11,15 @@ function LogoBadge({ logo }: { logo: TimelineLogo }) {
     logo.bg === 'white'
       ? 'bg-white p-2'
       : logo.bg === 'dark'
-        ? 'bg-[#1b1b1b] p-2'
+        ? 'bg-inset p-2'
         : logo.bg === 'cream'
-          ? 'bg-[#f1ece3] p-1.5'
+          ? 'bg-tile p-1.5'
           : 'bg-transparent';
 
   return (
     <div
       className={`flex h-16 w-32 shrink-0 items-center justify-center overflow-hidden rounded-lg border ${
-        logo.borderless ? 'border-transparent' : 'border-[#ddd2d0]/20'
+        logo.borderless ? 'border-transparent' : 'border-ink/20'
       } ${bgClass} sm:h-20 sm:w-44`}
     >
       <img
@@ -76,7 +76,7 @@ function TimelineRow({
     >
       <div className="relative text-right">
         {showYear && (
-          <span className="absolute right-0 top-[55px] -translate-y-1/2 font-mono text-base font-semibold tracking-tight text-[#fb8472] sm:top-[61px] sm:text-2xl lg:top-[63px]">
+          <span className="absolute right-0 top-[55px] -translate-y-1/2 font-mono text-base font-semibold tracking-tight text-accent sm:top-[61px] sm:text-2xl lg:top-[63px]">
             {year}
           </span>
         )}
@@ -87,18 +87,18 @@ function TimelineRow({
           aria-hidden="true"
           className={`absolute left-0 top-[55px] z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border transition-colors duration-500 sm:top-[61px] lg:top-[63px] ${
             visible
-              ? 'border-[#fb8472] bg-[#fb8472]'
-              : 'border-[#ddd2d0]/40 bg-[#2d2d2d]'
+              ? 'border-accent bg-accent'
+              : 'border-ink/40 bg-canvas'
           }`}
         />
 
-        <div className="flex flex-col justify-between gap-5 rounded-xl border border-[#ddd2d0]/15 bg-[#232323] p-5 lg:flex-row lg:items-start sm:p-6">
+        <div className="flex flex-col justify-between gap-5 rounded-xl border border-ink/15 bg-surface p-5 lg:flex-row lg:items-start sm:p-6">
           <div className="min-w-0 flex-1">
-            <span className="block font-mono text-xs leading-4 text-[#fb8472]">
+            <span className="block font-mono text-xs leading-4 text-accent">
               {item.period}
             </span>
 
-            <h3 className="mt-2 font-display text-lg font-semibold leading-tight text-[#f4eeec] sm:text-xl lg:text-2xl">
+            <h3 className="mt-2 font-display text-lg font-semibold leading-tight text-ink-strong sm:text-xl lg:text-2xl">
               {item.title}
             </h3>
 
@@ -107,18 +107,18 @@ function TimelineRow({
                 href={item.organizationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-[#ddd2d0]/90 transition hover:text-[#fb8472]"
+                className="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-ink/90 transition hover:text-accent"
               >
                 <span>{item.organization}</span>
-                <ArrowUpRight className="h-3 w-3 text-[#fb8472]" />
+                <ArrowUpRight className="h-3 w-3 text-accent" />
               </a>
             ) : (
-              <p className="mt-0.5 text-xs font-medium text-[#ddd2d0]/85">
+              <p className="mt-0.5 text-xs font-medium text-ink/85">
                 {item.organization}
               </p>
             )}
 
-            <p className="mt-2.5 text-sm leading-relaxed text-[#ddd2d0]">
+            <p className="mt-2.5 text-sm leading-relaxed text-ink">
               {item.summary}
             </p>
           </div>
@@ -166,12 +166,12 @@ export function TimelineSection() {
   return (
     <section
       id="timeline"
-      className="relative border-b border-[#ddd2d0]/15 pb-16 sm:pb-24"
+      className="relative border-b border-ink/15 pb-16 sm:pb-24"
     >
       {/* Sticky Section Header */}
-      <div className="sticky top-14 z-30 border-b border-[#ddd2d0]/15 bg-[#2d2d2d]/95 py-4 backdrop-blur-sm">
+      <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 sm:flex-row sm:items-end sm:px-8">
-          <h2 className="font-display text-3xl font-bold tracking-tight text-[#f4eeec] sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
             Timeline
           </h2>
         </div>
@@ -182,13 +182,13 @@ export function TimelineSection() {
           {/* Base Spine */}
           <div
             aria-hidden="true"
-            className="absolute top-7 bottom-2 left-[calc(3.5rem+0.75rem)] w-px bg-[#ddd2d0]/20 sm:left-[calc(7rem+2rem)]"
+            className="absolute top-7 bottom-2 left-[calc(3.5rem+0.75rem)] w-px bg-ink/20 sm:left-[calc(7rem+2rem)]"
           />
           {/* Animated Scroll Progress Spine */}
           <div
             ref={progressRef}
             aria-hidden="true"
-            className="absolute top-7 bottom-2 left-[calc(3.5rem+0.75rem)] w-[2px] origin-top bg-[#fb8472] sm:left-[calc(7rem+2rem)]"
+            className="absolute top-7 bottom-2 left-[calc(3.5rem+0.75rem)] w-[2px] origin-top bg-accent sm:left-[calc(7rem+2rem)]"
           />
 
           <ol ref={listRef} className="space-y-8 sm:space-y-10">

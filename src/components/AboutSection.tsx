@@ -5,12 +5,12 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative border-b border-[#ddd2d0]/15 pb-16 sm:pb-24"
+      className="relative border-b border-ink/15 pb-16 sm:pb-24"
     >
       {/* Sticky Section Header */}
-      <div className="sticky top-14 z-30 border-b border-[#ddd2d0]/15 bg-[#2d2d2d]/95 py-4 backdrop-blur-sm">
+      <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className="font-display text-3xl font-bold tracking-tight text-[#f4eeec] sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
             About
           </h2>
         </div>
@@ -22,7 +22,7 @@ export function AboutSection() {
           {/* Left Column: Intro text & IPhO honor snippet */}
           <div className="flex flex-col justify-center lg:col-span-7">
             <div className="space-y-4 sm:space-y-5">
-              <p className="font-sans text-base leading-relaxed text-[#ddd2d0] sm:text-lg sm:leading-relaxed">
+              <p className="font-sans text-base leading-relaxed text-ink sm:text-lg sm:leading-relaxed">
                 I am an undergraduate researcher at Mohamed Bin Zayed
                 University of Artificial Intelligence (MBZUAI), working at the
                 intersection of robotics, embedded systems, and machine
@@ -32,14 +32,14 @@ export function AboutSection() {
                   href={PROFILE.sherekilebiWebsite}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-[#f4eeec] underline decoration-[#fb8472] decoration-2 underline-offset-4 transition hover:text-[#fb8472]"
+                  className="font-medium text-ink-strong underline decoration-accent decoration-2 underline-offset-4 transition hover:text-accent"
                 >
                   Sherekilebi Labs
                 </a>
                 , that I founded and built from scratch in Georgia.
               </p>
 
-              <p className="font-sans text-base leading-relaxed text-[#ddd2d0] sm:text-lg sm:leading-relaxed">
+              <p className="font-sans text-base leading-relaxed text-ink sm:text-lg sm:leading-relaxed">
                 My background in competitive physics helps me approach complex and unfamiliar problems and
                 research new topics in AI and robotics with confidence.
 
@@ -51,7 +51,7 @@ export function AboutSection() {
 
 
             {/* Reference-styled IPhO Honor Snippet */}
-            <div className="mt-8 border-t border-b border-[#ddd2d0]/18 py-3.5 sm:py-4">
+            <div className="mt-8 border-t border-b border-ink/18 py-3.5 sm:py-4">
               <div className="flex items-center gap-3.5 sm:gap-4">
                 {/* IPhO Logo Badge */}
                 <div className="flex h-9 w-16 shrink-0 items-center justify-center rounded-md border border-white/20 bg-white p-1 shadow-sm sm:h-10 sm:w-20">
@@ -63,8 +63,8 @@ export function AboutSection() {
                 </div>
 
                 {/* Honor Text */}
-                <div className="min-w-0 flex-1 text-xs sm:text-sm leading-snug text-[#dcb36d]">
-                  <span className="font-bold text-[#f5c77e]">
+                <div className="min-w-0 flex-1 text-xs sm:text-sm leading-snug text-accent">
+                  <span className="font-bold text-accent">
                     2× Silver &amp; 1× Bronze Medalist
                   </span>
                   , International Physics Olympiad (IPhO 2023, 2022, 2021).{' '}
@@ -72,7 +72,7 @@ export function AboutSection() {
                     href="https://www.ipho-unofficial.org/countries/GEO/individual"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-0.5 font-medium underline decoration-[#dcb36d]/60 underline-offset-2 transition hover:text-[#f4eeec] hover:decoration-[#f4eeec]"
+                    className="inline-flex items-center gap-0.5 font-medium underline decoration-accent/60 underline-offset-2 transition hover:text-ink-strong hover:decoration-ink-strong"
                   >
                     <span>Official record</span>
                     <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
