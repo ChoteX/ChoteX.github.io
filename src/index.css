@@ -9,6 +9,17 @@
 @import "tailwindcss";
 
 @theme {
+  --color-canvas: #202223;
+  --color-surface: #272b2d;
+  --color-surface-hover: #303637;
+  --color-inset: #191c1e;
+  --color-deep: #141718;
+  --color-scrim: #0d1011;
+  --color-edge: #424a47;
+  --color-tile: #edf2ee;
+  --color-accent: #93c5a3;
+  --color-ink: #d4ddd7;
+  --color-ink-strong: #f1f5f2;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -16,15 +27,16 @@
 
 @layer base {
   html {
-    background-color: #2d2d2d;
-    color: #ddd2d0;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     scroll-padding-top: 4.5rem;
   }
 
   body {
-    background-color: #2d2d2d;
-    color: #ddd2d0;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    overflow-wrap: break-word;
   }
 
   h1,
@@ -49,16 +61,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #2d2d2d;
+  background: var(--color-canvas);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f1f1f;
+  background: var(--color-edge);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #fb8472;
+  background: var(--color-accent);
 }
 
 @keyframes project-modal-in {

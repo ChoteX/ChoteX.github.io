@@ -32,7 +32,7 @@ interface ProjectsSectionProps {
 }
 
 function ProjectIcon({ icon }: { icon: ProjectIconId }): ReactNode {
-  const cls = 'h-4 w-4 shrink-0 text-[#fb8472]';
+  const cls = 'h-4 w-4 shrink-0 text-accent';
 
   switch (icon) {
     case 'bot':
@@ -72,18 +72,18 @@ function ProjectPresentationViewer({
   return (
     <section
       aria-labelledby="project-presentation-title"
-      className="overflow-hidden rounded-xl border border-[#ddd2d0]/15 bg-[#1a1a1a]"
+      className="overflow-hidden rounded-xl border border-ink/15 bg-inset"
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ddd2d0]/15 px-4 py-3 sm:px-5">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/15 px-4 py-3 sm:px-5">
         <div>
           <h3
             id="project-presentation-title"
-            className="inline-flex items-center gap-2 font-display text-sm font-semibold text-[#f4eeec]"
+            className="inline-flex items-center gap-2 font-display text-sm font-semibold text-ink-strong"
           >
-            <FileText className="h-4 w-4 text-[#fb8472]" aria-hidden="true" />
+            <FileText className="h-4 w-4 text-accent" aria-hidden="true" />
             Slide deck
           </h3>
-          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.08em] text-[#ddd2d0]/55">
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink/55">
             {presentation.slideCount} slides
           </p>
         </div>
@@ -91,10 +91,10 @@ function ProjectPresentationViewer({
           href={presentation.src}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-[#ddd2d0]/80 transition hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-ink/80 transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           Open full PDF
-          <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" aria-hidden="true" />
+          <ArrowUpRight className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
         </a>
       </div>
       <iframe
@@ -109,11 +109,11 @@ function ProjectPresentationViewer({
 
 function DetailList({ items }: { items: string[] }) {
   return (
-    <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#ddd2d0]/90 sm:text-[0.95rem]">
+    <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90 sm:text-[0.95rem]">
       {items.map((detail) => (
         <li key={detail} className="flex items-start gap-3">
           <span
-            className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#fb8472]"
+            className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
             aria-hidden="true"
           />
           <span>{detail}</span>
@@ -136,14 +136,14 @@ function ProjectCard({
   const isSpoilerSimulation = project.id === 'active-spoiler';
 
   return (
-    <article className="project-card flex h-full flex-col overflow-hidden rounded-2xl border border-[#ddd2d0]/15 bg-[#242424] shadow-[0_18px_45px_rgba(0,0,0,0.12)] transition-colors duration-200 hover:border-[#fb8472]/45 hover:bg-[#282828]">
+    <article className="project-card flex h-full flex-col overflow-hidden rounded-2xl border border-ink/15 bg-surface shadow-[0_18px_45px_rgba(0,0,0,0.12)] transition-colors duration-200 hover:border-accent/45 hover:bg-surface-hover">
       <button
         type="button"
         onClick={(event) => onOpen(project.id, event.currentTarget)}
-        className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#fb8472]"
+        className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
         aria-label={`Open details for ${project.title}`}
       >
-        <div className="relative aspect-[16/10] overflow-hidden border-b border-[#ddd2d0]/12 bg-[#1a1a1a]">
+        <div className="relative aspect-[16/10] overflow-hidden border-b border-ink/12 bg-inset">
           {cover ? (
             <img
               src={cover.src}
@@ -159,13 +159,13 @@ function ProjectCard({
               }`}
             />
           ) : (
-            <div className="flex h-full items-center justify-center font-mono text-xs text-[#ddd2d0]/60">
+            <div className="flex h-full items-center justify-center font-mono text-xs text-ink/60">
               Image coming soon
             </div>
           )}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#171717]/75 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/75 via-transparent to-transparent" />
           <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3">
-            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#f4eeec]/80">
+            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-strong/80">
               {project.year}
             </span>
           </div>
@@ -173,15 +173,15 @@ function ProjectCard({
 
         <div className="p-5 sm:p-6">
           <div className="flex items-start gap-3">
-            <div className="mt-1 rounded-full border border-[#fb8472]/35 bg-[#fb8472]/10 p-2">
+            <div className="mt-1 rounded-full border border-accent/35 bg-accent/10 p-2">
               <ProjectIcon icon={project.icon} />
             </div>
-            <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-[#f4eeec] sm:text-[1.35rem]">
+            <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-ink-strong sm:text-[1.35rem]">
               {project.title}
             </h3>
           </div>
 
-          <p className="mt-4 text-sm leading-relaxed text-[#ddd2d0]/85">
+          <p className="mt-4 text-sm leading-relaxed text-ink/85">
             {project.summary}
           </p>
 
@@ -189,7 +189,7 @@ function ProjectCard({
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-[#ddd2d0]/18 bg-[#1d1d1d] px-2.5 py-1 font-mono text-[10px] text-[#ddd2d0]/80"
+                className="rounded-full border border-ink/18 bg-inset px-2.5 py-1 font-mono text-[10px] text-ink/80"
               >
                 {tag}
               </span>
@@ -198,18 +198,18 @@ function ProjectCard({
         </div>
       </button>
 
-      <div className="mt-auto flex min-h-14 flex-wrap items-center gap-x-5 gap-y-3 border-t border-[#ddd2d0]/12 px-5 py-3 sm:px-6">
+      <div className="mt-auto flex min-h-14 flex-wrap items-center gap-x-5 gap-y-3 border-t border-ink/12 px-5 py-3 sm:px-6">
         {project.githubUrl ? (
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(event) => event.stopPropagation()}
-            className="inline-flex items-center gap-2 text-xs font-medium text-[#ddd2d0] transition hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472] focus-visible:ring-offset-2 focus-visible:ring-offset-[#242424]"
+            className="inline-flex items-center gap-2 text-xs font-medium text-ink transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             <Github className="h-4 w-4" />
             GitHub repo
-            <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
           </a>
         ) : null}
         {project.presentationPdf ? (
@@ -218,11 +218,11 @@ function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${project.presentationPdf.label} in a new tab`}
-            className="inline-flex items-center gap-2 text-xs font-medium text-[#ddd2d0] transition hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472] focus-visible:ring-offset-2 focus-visible:ring-offset-[#242424]"
+            className="inline-flex items-center gap-2 text-xs font-medium text-ink transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
-            <FileText className="h-4 w-4 text-[#fb8472]" aria-hidden="true" />
+            <FileText className="h-4 w-4 text-accent" aria-hidden="true" />
             Slide deck
-            <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" aria-hidden="true" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
           </a>
         ) : null}
       </div>
@@ -265,7 +265,7 @@ export function ProjectModal({
         aria-label="Close project details"
         tabIndex={-1}
         onClick={onClose}
-        className="absolute inset-0 cursor-default bg-[#090909]/82 backdrop-blur-[2px]"
+        className="absolute inset-0 cursor-default bg-scrim/82 backdrop-blur-[2px]"
       />
 
       <div
@@ -273,18 +273,18 @@ export function ProjectModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
-        className="relative z-10 flex max-h-[calc(100vh-1.5rem)] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-[#ddd2d0]/18 bg-[#242424] shadow-[0_32px_100px_rgba(0,0,0,0.58)] motion-safe:animate-project-modal-in sm:max-h-[calc(100vh-3rem)]"
+        className="relative z-10 flex max-h-[calc(100dvh-1.5rem)] w-full min-w-0 max-w-6xl flex-col overflow-hidden rounded-2xl border border-ink/18 bg-surface shadow-[0_32px_100px_rgba(0,0,0,0.58)] motion-safe:animate-project-modal-in sm:max-h-[calc(100dvh-3rem)]"
       >
-        <div className="flex items-start justify-between gap-5 border-b border-[#ddd2d0]/15 px-5 py-5 sm:px-8 sm:py-6">
+        <div className="flex shrink-0 items-start justify-between gap-3 border-b border-ink/15 px-4 py-4 sm:gap-5 sm:px-8 sm:py-6">
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.08em] text-[#fb8472]">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.08em] text-accent">
               <span>{project.year}</span>
-              <span className="text-[#ddd2d0]/35">/</span>
-              <span className="text-[#ddd2d0]/70">{project.context}</span>
+              <span className="text-ink/35">/</span>
+              <span className="text-ink/70">{project.context}</span>
             </div>
             <h2
               id="project-modal-title"
-              className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.025em] text-[#f4eeec] sm:text-4xl"
+              className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.025em] text-ink-strong sm:text-4xl"
             >
               {project.title}
             </h2>
@@ -295,15 +295,15 @@ export function ProjectModal({
             type="button"
             onClick={onClose}
             aria-label="Close project details"
-            className="shrink-0 rounded-full border border-[#ddd2d0]/20 p-2 text-[#ddd2d0]/75 transition hover:border-[#fb8472]/60 hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/20 text-ink/75 transition hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="overflow-y-auto">
+        <div className="min-h-0 overflow-y-auto overscroll-contain">
           <div className="grid gap-7 p-5 sm:p-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
-            <div>
+            <div className="min-w-0">
               {project.presentationPdf ? (
                 <ProjectPresentationViewer presentation={project.presentationPdf} />
               ) : (
@@ -312,7 +312,7 @@ export function ProjectModal({
                     <button
                       type="button"
                       onClick={(event) => openImage(images[0], event.currentTarget)}
-                      className="group block w-full overflow-hidden rounded-xl border border-[#ddd2d0]/15 bg-[#1a1a1a] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+                      className="group block w-full overflow-hidden rounded-xl border border-ink/15 bg-inset text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       <img
                         src={images[0].src}
@@ -326,7 +326,7 @@ export function ProjectModal({
                     </button>
                   )}
                   {images[0] && (
-                    <p className="mt-2 text-xs leading-relaxed text-[#ddd2d0]/60">
+                    <p className="mt-2 text-xs leading-relaxed text-ink/60">
                       {images[0].caption}
                     </p>
                   )}
@@ -340,7 +340,7 @@ export function ProjectModal({
                       key={image.src}
                       type="button"
                       onClick={(event) => openImage(image, event.currentTarget)}
-                      className="group overflow-hidden rounded-lg border border-[#ddd2d0]/15 bg-[#1a1a1a] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+                      className="group overflow-hidden rounded-lg border border-ink/15 bg-inset text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       <img
                         src={image.src}
@@ -353,19 +353,19 @@ export function ProjectModal({
               )}
             </div>
 
-            <div>
-              <p className="max-w-2xl text-base leading-relaxed text-[#ddd2d0] sm:text-lg">
+            <div className="min-w-0">
+              <p className="max-w-2xl text-base leading-relaxed text-ink sm:text-lg">
                 {project.summary}
               </p>
 
               {project.detailSections ? (
-                <div className="mt-7 border-t border-[#ddd2d0]/15 pt-6">
+                <div className="mt-7 border-t border-ink/15 pt-6">
                   {project.detailSections.map((section, index) => (
                     <div
                       key={section.title}
-                      className={index > 0 ? 'mt-7 border-t border-[#ddd2d0]/15 pt-6' : ''}
+                      className={index > 0 ? 'mt-7 border-t border-ink/15 pt-6' : ''}
                     >
-                      <h3 className="font-display text-lg font-semibold text-[#f4eeec]">
+                      <h3 className="font-display text-lg font-semibold text-ink-strong">
                         {section.title}
                       </h3>
                       <DetailList items={section.items} />
@@ -373,20 +373,20 @@ export function ProjectModal({
                   ))}
                 </div>
               ) : (
-                <div className="mt-7 border-t border-[#ddd2d0]/15 pt-6">
-                  <h3 className="font-display text-lg font-semibold text-[#f4eeec]">
+                <div className="mt-7 border-t border-ink/15 pt-6">
+                  <h3 className="font-display text-lg font-semibold text-ink-strong">
                     Inside the build
                   </h3>
                   <DetailList items={project.details} />
                 </div>
               )}
 
-              <div className="mt-7 border-t border-[#ddd2d0]/15 pt-5">
+              <div className="mt-7 border-t border-ink/15 pt-5">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[#ddd2d0]/18 bg-[#1d1d1d] px-2.5 py-1 font-mono text-[10px] text-[#ddd2d0]/85"
+                      className="rounded-full border border-ink/18 bg-inset px-2.5 py-1 font-mono text-[10px] text-ink/85"
                     >
                       {tag}
                     </span>
@@ -399,11 +399,11 @@ export function ProjectModal({
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-medium text-[#f4eeec] transition hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+                      className="inline-flex items-center gap-2 font-medium text-ink-strong transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       <Github className="h-4 w-4" />
                       GitHub repo
-                      <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" />
+                      <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
                     </a>
                   )}
 
@@ -412,10 +412,10 @@ export function ProjectModal({
                       href={project.secondaryGithub.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#ddd2d0]/75 transition hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+                      className="inline-flex items-center gap-2 text-ink/75 transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       {project.secondaryGithub.label}
-                      <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" />
+                      <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
                     </a>
                   )}
 
@@ -424,10 +424,10 @@ export function ProjectModal({
                       href={PROFILE.sherekilebiWebsite}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#ddd2d0]/75 transition hover:text-[#fb8472] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fb8472]"
+                      className="inline-flex items-center gap-2 text-ink/75 transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       Sherekilebi Labs
-                      <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" />
+                      <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
                     </a>
                   )}
                 </div>
@@ -442,10 +442,10 @@ export function ProjectModal({
 
 export function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="border-b border-[#ddd2d0]/15 pb-16 sm:pb-24">
-      <div className="sticky top-14 z-30 border-b border-[#ddd2d0]/15 bg-[#2d2d2d]/95 py-4 backdrop-blur-sm">
+    <section id="projects" className="border-b border-ink/15 pb-16 sm:pb-24">
+      <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className="font-display text-3xl font-bold tracking-tight text-[#f4eeec] sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
             Selected Projects
           </h2>
         </div>
@@ -453,9 +453,6 @@ export function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mt-8 max-w-3xl">
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#ddd2d0]/80 sm:text-lg">
-            A focused set of robots, embedded systems, physical experiments, and the lab infrastructure that connects them.
-          </p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">

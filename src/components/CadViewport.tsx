@@ -95,14 +95,14 @@ export function CadViewport({ src, label }: CadViewportProps) {
     const stopAutoOnInteract = () => setAutoRotate(false);
     controls.addEventListener('start', stopAutoOnInteract);
 
-    const hemi = new THREE.HemisphereLight(0xf4eeec, 0x333333, 2.0);
+    const hemi = new THREE.HemisphereLight(0xf1f5f2, 0x333333, 2.0);
     scene.add(hemi);
 
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.3);
     keyLight.position.set(4, 7, 5);
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0xfb8472, 0.85);
+    const rimLight = new THREE.DirectionalLight(0x93c5a3, 0.85);
     rimLight.position.set(-5, 3, -4);
     scene.add(rimLight);
 
@@ -230,7 +230,7 @@ export function CadViewport({ src, label }: CadViewportProps) {
   };
 
   return (
-    <div className="relative h-[380px] w-full overflow-hidden rounded-lg border border-[#ddd2d0]/15 bg-[#1e1e1e] select-none sm:h-[430px]">
+    <div className="relative h-[380px] w-full overflow-hidden rounded-lg border border-ink/15 bg-inset select-none sm:h-[430px]">
       <div
         ref={containerRef}
         className="h-full w-full cursor-grab active:cursor-grabbing"
@@ -238,47 +238,47 @@ export function CadViewport({ src, label }: CadViewportProps) {
       />
 
       {status === 'loading' && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#1e1e1e]">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#ddd2d0]/25 border-t-[#fb8472]" />
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-inset">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-ink/25 border-t-accent" />
         </div>
       )}
 
       {status === 'error' && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#1e1e1e] px-6 text-center text-xs text-[#ddd2d0]/75">
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-inset px-6 text-center text-xs text-ink/75">
           3D preview unavailable in this browser.
         </div>
       )}
 
       {status === 'ready' && (
-        <div className="absolute right-3 bottom-3 z-10 flex items-center gap-1.5 rounded-md border border-[#ddd2d0]/15 bg-[#181818]/90 px-2 py-1 backdrop-blur-sm">
+        <div className="absolute right-3 bottom-3 z-10 flex items-center gap-1.5 rounded-md border border-ink/15 bg-deep/90 px-2 py-1 backdrop-blur-sm">
           <button
             type="button"
             onClick={() => setAutoRotate((v) => !v)}
             className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] transition ${
-              autoRotate ? 'text-[#fb8472]' : 'text-[#ddd2d0]/80 hover:text-white'
+              autoRotate ? 'text-accent' : 'text-ink/80 hover:text-white'
             }`}
             title="Toggle rotation"
           >
             {autoRotate ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
             <span>Rotate</span>
           </button>
-          <span className="text-[#ddd2d0]/20">|</span>
+          <span className="text-ink/20">|</span>
           <button
             type="button"
             onClick={() => setXrayMode((v) => !v)}
             className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] transition ${
-              xrayMode ? 'text-[#fb8472]' : 'text-[#ddd2d0]/80 hover:text-white'
+              xrayMode ? 'text-accent' : 'text-ink/80 hover:text-white'
             }`}
             title="Toggle wireframe"
           >
             <Layers className="h-3 w-3" />
             <span>Wireframe</span>
           </button>
-          <span className="text-[#ddd2d0]/20">|</span>
+          <span className="text-ink/20">|</span>
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] text-[#ddd2d0]/80 transition hover:text-white"
+            className="inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] text-ink/80 transition hover:text-white"
             title="Reset view"
           >
             <RotateCcw className="h-3 w-3" />

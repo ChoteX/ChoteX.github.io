@@ -319,9 +319,9 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
     spec.nodes.find((n) => n.id === activeNodeId) ?? spec.nodes[0];
 
   return (
-    <div className="flex flex-col justify-between rounded-lg border border-[#ddd2d0]/15 bg-[#232323] p-4">
+    <div className="flex flex-col justify-between rounded-lg border border-ink/15 bg-surface p-4">
       <div className="mb-2 flex items-center justify-between gap-2">
-        <span className="text-xs font-medium text-[#ddd2d0]/90">
+        <span className="text-xs font-medium text-ink/90">
           {spec.heading}
         </span>
       </div>
@@ -343,7 +343,7 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
               markerHeight="5.5"
               orient="auto-start-reverse"
             >
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#fb8472" />
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-accent)" />
             </marker>
           </defs>
 
@@ -357,7 +357,7 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
                 <path
                   d={d}
                   fill="none"
-                  stroke="#ddd2d0"
+                  stroke="var(--color-ink)"
                   strokeOpacity={0.45}
                   strokeWidth={1.5}
                   strokeDasharray={edge.dashed ? '4 4' : undefined}
@@ -371,13 +371,13 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
                       width={104}
                       height={16}
                       rx={3}
-                      fill="#3d3d3d"
+                      fill="var(--color-edge)"
                     />
                     <text
                       x={0}
                       y={2}
                       textAnchor="middle"
-                      fill="#ddd2d0"
+                      fill="var(--color-ink)"
                       fontSize="9.5"
                       fontFamily="JetBrains Mono, monospace"
                     >
@@ -403,17 +403,17 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
                   width={node.w}
                   height={node.h}
                   rx={6}
-                  fill={isSelected ? '#2e2e2e' : '#1e1e1e'}
-                  stroke={isSelected ? '#fb8472' : 'rgba(221, 210, 208, 0.22)'}
+                  fill={isSelected ? 'var(--color-surface-hover)' : 'var(--color-inset)'}
+                  stroke={isSelected ? 'var(--color-accent)' : 'rgba(212, 221, 215, 0.22)'}
                   strokeWidth={isSelected ? 1.75 : 1}
                 />
                 {isSelected && (
-                  <rect x={0} y={0} width={3} height={node.h} rx={1.5} fill="#fb8472" />
+                  <rect x={0} y={0} width={3} height={node.h} rx={1.5} fill="var(--color-accent)" />
                 )}
                 <text
                   x={12}
                   y={28}
-                  fill="#f4eeec"
+                  fill="var(--color-ink-strong)"
                   fontSize="12"
                   fontWeight="600"
                   fontFamily="Space Grotesk, Inter, sans-serif"
@@ -423,7 +423,7 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
                 <text
                   x={12}
                   y={48}
-                  fill="#ddd2d0"
+                  fill="var(--color-ink)"
                   fillOpacity={0.78}
                   fontSize="10"
                   fontFamily="JetBrains Mono, monospace"
@@ -436,8 +436,8 @@ export function SystemSchematic({ schematicId }: { schematicId: SchematicId }) {
         </svg>
       </div>
 
-      <div className="mt-2 border-t border-[#ddd2d0]/12 pt-2.5 text-xs leading-relaxed text-[#ddd2d0]/90">
-        <span className="font-medium text-[#f4eeec]">{selectedNode.title}:</span>{' '}
+      <div className="mt-2 border-t border-ink/12 pt-2.5 text-xs leading-relaxed text-ink/90">
+        <span className="font-medium text-ink-strong">{selectedNode.title}:</span>{' '}
         {selectedNode.detail}
       </div>
     </div>

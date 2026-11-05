@@ -13,46 +13,46 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#ddd2d0]/15 bg-[#2d2d2d]/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-ink/15 bg-canvas/95 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8">
         <a
           href="#top"
-          className="font-display text-sm font-semibold tracking-tight text-[#f4eeec] transition hover:text-[#fb8472]"
+          className="font-display text-sm font-semibold tracking-tight text-ink-strong transition hover:text-accent"
         >
           {PROFILE.name}
         </a>
 
         <nav
           aria-label="Primary navigation"
-          className="hidden items-center gap-7 md:flex"
+          className="hidden items-center gap-7 lg:flex"
         >
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[#ddd2d0]/85 transition hover:text-[#fb8472]"
+              className="text-sm text-ink/85 transition hover:text-accent"
             >
               {link.label}
             </a>
           ))}
 
-          <span className="h-3.5 w-px bg-[#ddd2d0]/20" aria-hidden="true" />
+          <span className="h-3.5 w-px bg-ink/20" aria-hidden="true" />
 
           <a
             href={PROFILE.sherekilebiWebsite}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-[#ddd2d0] transition hover:text-[#fb8472]"
+            className="inline-flex items-center gap-1 text-sm text-ink transition hover:text-accent"
           >
             <span>Sherekilebi Labs</span>
-            <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
           </a>
 
           <a
             href={PROFILE.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="border-b border-[#fb8472] pb-0.5 text-sm font-medium text-[#f4eeec] transition hover:text-[#fb8472]"
+            className="border-b border-accent pb-0.5 text-sm font-medium text-ink-strong transition hover:text-accent"
           >
             CV
           </a>
@@ -61,7 +61,8 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((prev) => !prev)}
-          className="p-1.5 text-[#ddd2d0] transition hover:text-[#fb8472] md:hidden"
+          className="flex h-11 w-11 items-center justify-center text-ink transition hover:text-accent lg:hidden"
+          aria-controls="mobile-navigation"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
         >
@@ -70,14 +71,14 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-[#ddd2d0]/15 bg-[#232323] px-5 py-4 md:hidden">
+        <div id="mobile-navigation" className="absolute inset-x-0 top-full max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-ink/15 bg-surface px-5 py-4 lg:hidden">
           <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-sm text-[#ddd2d0] transition hover:text-[#fb8472]"
+                className="flex min-h-11 items-center text-sm text-ink transition hover:text-accent"
               >
                 {link.label}
               </a>
@@ -86,16 +87,16 @@ export function Navbar() {
               href={PROFILE.sherekilebiWebsite}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 pt-2 border-t border-[#ddd2d0]/15 text-sm text-[#ddd2d0] hover:text-[#fb8472]"
+              className="inline-flex items-center gap-1 pt-2 border-t border-ink/15 text-sm text-ink hover:text-accent"
             >
               <span>Sherekilebi Labs</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-[#fb8472]" />
+              <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
             </a>
             <a
               href={PROFILE.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-[#fb8472]"
+              className="text-sm font-medium text-accent"
             >
               CV (PDF)
             </a>
