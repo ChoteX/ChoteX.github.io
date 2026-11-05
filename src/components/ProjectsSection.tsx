@@ -453,9 +453,6 @@ export function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mt-8 max-w-3xl">
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink/80 sm:text-lg">
-            A focused set of robots, embedded systems, physical experiments, and the lab infrastructure that connects them.
-          </p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">

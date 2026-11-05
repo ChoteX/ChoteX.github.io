@@ -32,13 +32,13 @@ export function HeroSection({ onOpenProject }: HeroSectionProps) {
             <div className="pointer-events-none invisible hidden select-none lg:block lg:pr-3" aria-hidden="true">
               <div className="h-[3px] w-[60px]" />
               <div className="mt-7 whitespace-nowrap font-display text-[3.375rem] font-semibold tracking-tight xl:text-[4.125rem]">
-                Hi, am {PROFILE.heroName}.
+                Hi, I'm {PROFILE.heroName}.
               </div>
             </div>
             <div className="lg:absolute lg:left-0 lg:top-[56.6%] lg:-translate-y-[calc(100%+0.975rem)]">
               <div className="h-[3px] w-[60px] bg-accent" aria-hidden="true" />
               <h1 className="mt-7 font-display text-[clamp(2.25rem,5vw,4.125rem)] font-semibold leading-[1.1] tracking-tight text-ink-strong lg:whitespace-nowrap lg:text-[3.375rem] lg:leading-normal xl:text-[4.125rem]">
-                Hi, am {PROFILE.heroName}.
+                Hi, I'm {PROFILE.heroName}.
               </h1>
             </div>
           </div>
