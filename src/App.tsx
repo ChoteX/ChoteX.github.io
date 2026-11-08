@@ -7,11 +7,13 @@ import { TimelineSection } from './components/TimelineSection';
 import { SkillsSection } from './components/SkillsSection';
 import { Footer } from './components/Footer';
 import { ImageLightbox, type LightboxItem } from './components/ImageLightbox';
-import { PROJECTS, type ProjectItem } from './data/portfolioData';
+import { usePortfolio } from './LanguageContext';
 
 export function App() {
+  const { projects: PROJECTS } = usePortfolio();
   const [lightboxItem, setLightboxItem] = useState<LightboxItem | null>(null);
-  const [activeProject, setActiveProject] = useState<ProjectItem | null>(null);
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
+  const activeProject = PROJECTS.find((project) => project.id === activeProjectId);
   const projectTriggerRef = useRef<HTMLElement | null>(null);
   const lightboxTriggerRef = useRef<HTMLElement | null>(null);
 
@@ -19,7 +21,7 @@ export function App() {
     const project = PROJECTS.find((item) => item.id === projectId);
     if (!project) return;
     projectTriggerRef.current = trigger;
-    setActiveProject(project);
+    setActiveProjectId(project.id);
   };
 
   const openLightbox = (item: LightboxItem, trigger: HTMLElement) => {
@@ -29,7 +31,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-canvas text-ink selection:bg-accent/25 selection:text-ink-strong">
-      <div inert={activeProject !== null || lightboxItem !== null}>
+      <div inert={Boolean(activeProject) || lightboxItem !== null}>
         <Navbar />
 
         <main>
@@ -46,7 +48,7 @@ export function App() {
       {activeProject && (
         <ProjectModal
           project={activeProject}
-          onClose={() => setActiveProject(null)}
+          onClose={() => setActiveProjectId(null)}
           onOpenLightbox={openLightbox}
           returnFocus={projectTriggerRef.current}
           isLightboxOpen={lightboxItem !== null}

@@ -1,7 +1,9 @@
 import { ArrowUpRight } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
+import { useLanguage } from '../LanguageContext';
 
 export function AboutSection() {
+  const { language, t } = useLanguage();
   return (
     <section
       id="about"
@@ -11,7 +13,7 @@ export function AboutSection() {
       <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
-            About
+            {t('About')}
           </h2>
         </div>
       </div>
@@ -23,11 +25,20 @@ export function AboutSection() {
           <div className="flex flex-col justify-center lg:col-span-7">
             <div className="space-y-4 sm:space-y-5">
               <p className="font-sans text-base leading-relaxed text-ink sm:text-lg sm:leading-relaxed">
-                I am an undergraduate researcher at Mohamed Bin Zayed
+                {language === 'ka' ? <>
+                  მუჰამედ ბინ ზაიდის ხელოვნური ინტელექტის უნივერსიტეტში (MBZUAI)
+                  ბაკალავრიატის საფეხურზე ვსწავლობ და კვლევას რობოტიკის, ჩაშენებული
+                  სისტემებისა და მანქანური სწავლების მიმართულებებით ვატარებ. მინდა
+                  შევქმნა ფიზიკური სისტემები, რომლებიც რეალურ პრობლემებს გადაჭრის.
+                  ჩემი პროექტების უმეტესობაზე საქართველოში ჩემ მიერ ნულიდან შექმნილ
+                  რობოტიკის სახელოსნოში ვმუშაობ —{' '}
+                </> : <>
+                  I am an undergraduate researcher at Mohamed Bin Zayed
                 University of Artificial Intelligence (MBZUAI), working at the
                 intersection of robotics, embedded systems, and machine
                 learning. I aspire to build physical systems that can solve real-world problems.
                 Most of my projects are prototyped at the robotics makerspace,{' '}
+                </>}
                 <a
                   href={PROFILE.sherekilebiWebsite}
                   target="_blank"
@@ -36,16 +47,26 @@ export function AboutSection() {
                 >
                   Sherekilebi Labs
                 </a>
-                , that I founded and built from scratch in Georgia.
+                {language === 'ka' ? '-ში.' : ', that I founded and built from scratch in Georgia.'}
               </p>
 
               <p className="font-sans text-base leading-relaxed text-ink sm:text-lg sm:leading-relaxed">
-                My background in competitive physics helps me approach complex and unfamiliar problems and
+                {language === 'ka' ? <>
+                  ფიზიკის ოლიმპიადებზე მიღებული გამოცდილება მეხმარება, თავდაჯერებით
+                  შევეჭიდო რთულ და უცნობ ამოცანებს და ხელოვნური ინტელექტისა და რობოტიკის
+                  ახალ საკითხებში გავერკვე. პროექტზე მუშაობისას ყველაზე მეტად დარგის
+                  სპეციალისტებთან იდეების განხილვა და მათი გამოცდილების გაზიარება მიყვარს.
+                  ამ განსხვავებულ ხედვებს ვაერთიანებ სისტემებში, რომლებიც მონაცემთა
+                  მეცნიერებას, კომპიუტერულ ხედვას, მართვის სისტემებსა და მექანიკურ
+                  ინჟინერიას აკავშირებს.
+                </> : <>
+                  My background in competitive physics helps me approach complex and unfamiliar problems and
                 research new topics in AI and robotics with confidence.
 
                 My favorite part of any project is discussing ideas with field experts to learn from their experiences.
                 I love uniting those diverse insights to build complex systems that bridge data science,
                 computer vision, control systems, and mechanical engineering.
+                </>}
               </p>
             </div>
 
@@ -57,7 +78,7 @@ export function AboutSection() {
                 <div className="flex h-9 w-16 shrink-0 items-center justify-center rounded-md border border-white/20 bg-white p-1 shadow-sm sm:h-10 sm:w-20">
                   <img
                     src="./media/ipho.png"
-                    alt="International Physics Olympiad"
+                    alt={t('International Physics Olympiad')}
                     className="h-full w-full object-contain"
                   />
                 </div>
@@ -65,16 +86,16 @@ export function AboutSection() {
                 {/* Honor Text */}
                 <div className="min-w-0 flex-1 text-xs sm:text-sm leading-snug text-[#dcb36d]">
                   <span className="font-bold text-[#f5c77e]">
-                    2× Silver &amp; 1× Bronze Medalist
+                    {t('2× Silver & 1× Bronze Medalist')}
                   </span>
-                  , International Physics Olympiad (IPhO 2023, 2022, 2021).{' '}
+                  {t(', International Physics Olympiad (IPhO 2023, 2022, 2021).')}{' '}
                   <a
                     href="https://www.ipho-unofficial.org/countries/GEO/individual"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-0.5 font-medium underline decoration-[#dcb36d]/60 underline-offset-2 transition hover:text-ink-strong hover:decoration-ink-strong"
                   >
-                    <span>Official record</span>
+                    <span>{t('Official record')}</span>
                     <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
                   </a>
                 </div>
@@ -87,7 +108,7 @@ export function AboutSection() {
             <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/40">
               <img
                 src="./media/dachiko updated.jpeg"
-                alt="Dachi Tchotashvili"
+                alt={t('Dachi Tchotashvili')}
                 loading="lazy"
                 width={1844}
                 height={2304}

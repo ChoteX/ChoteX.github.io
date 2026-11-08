@@ -1,3 +1,4 @@
+import { useLanguage } from '../LanguageContext';
 import { HIGH_LEVEL_SKILLS, type SkillIconId } from '../data/portfolioData';
 
 type SkillLogoAsset = {
@@ -75,12 +76,13 @@ function SkillLogo({ id }: { id: SkillIconId }) {
 }
 
 export function SkillsSection() {
+  const { t } = useLanguage();
   return (
     <section id="skills" className="relative pb-16 sm:pb-24">
       <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
-            Skills
+            {t('Skills')}
           </h2>
         </div>
       </div>

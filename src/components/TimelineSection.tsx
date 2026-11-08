@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import {
-  TIMELINE_ITEMS,
   type TimelineItem,
   type TimelineLogo,
 } from '../data/portfolioData';
+import { useLanguage, usePortfolio } from '../LanguageContext';
 
 function LogoBadge({ logo }: { logo: TimelineLogo }) {
   const bgClass =
@@ -131,6 +131,8 @@ function TimelineRow({
 }
 
 export function TimelineSection() {
+  const { t } = useLanguage();
+  const { timeline: TIMELINE_ITEMS } = usePortfolio();
   const listRef = useRef<HTMLOListElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
 
@@ -172,7 +174,7 @@ export function TimelineSection() {
       <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 sm:flex-row sm:items-end sm:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
-            Timeline
+            {t('Timeline')}
           </h2>
         </div>
       </div>

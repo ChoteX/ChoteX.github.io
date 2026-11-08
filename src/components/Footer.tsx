@@ -5,7 +5,7 @@ import {
   Linkedin,
   Mail,
 } from 'lucide-react';
-import { PROFILE } from '../data/portfolioData';
+import { useLanguage, usePortfolio } from '../LanguageContext';
 
 const FOOTER_NAV = [
   { label: 'Home', href: '#top' },
@@ -16,6 +16,8 @@ const FOOTER_NAV = [
 ];
 
 export function Footer() {
+  const { t } = useLanguage();
+  const { profile: PROFILE } = usePortfolio();
   const year = new Date().getFullYear();
 
   return (
@@ -27,13 +29,13 @@ export function Footer() {
         <div className="grid gap-14 lg:grid-cols-[1.35fr_0.75fr_1fr] lg:gap-16">
           <section aria-labelledby="footer-intro-title" className="max-w-xl">
             <p className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-accent">
-              Get in touch
+              {t('Get in touch')}
             </p>
             <h2
               id="footer-intro-title"
               className="mt-4 max-w-lg font-display text-3xl font-semibold tracking-tight text-ink-strong sm:text-4xl"
             >
-              Robotics, AI, and engineering in practice.
+              {t('Robotics, AI, and engineering in practice.')}
             </h2>
 
             <a
@@ -52,9 +54,9 @@ export function Footer() {
             </a>
           </section>
 
-          <nav aria-label="Footer navigation">
+          <nav aria-label={t('Footer navigation')}>
             <h3 className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-ink/45">
-              Explore
+              {t('Explore')}
             </h3>
             <ul className="mt-5 space-y-3">
               {FOOTER_NAV.map((link) => (
@@ -63,7 +65,7 @@ export function Footer() {
                     href={link.href}
                     className="inline-flex items-center text-sm text-ink/80 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-surface"
                   >
-                    {link.label}
+                    {t(link.label)}
                   </a>
                 </li>
               ))}
@@ -75,7 +77,7 @@ export function Footer() {
                   className="inline-flex items-center gap-2 text-sm font-medium text-ink-strong transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-surface"
                 >
                   <Download className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-                  <span>Download CV</span>
+                  <span>{t('Download CV')}</span>
                 </a>
               </li>
             </ul>
@@ -86,14 +88,14 @@ export function Footer() {
               id="footer-links-title"
               className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-ink/45"
             >
-              Elsewhere
+              {t('Elsewhere')}
             </h3>
             <div className="mt-5 space-y-3">
               <a
                 href={PROFILE.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Dachi Tchotashvili on GitHub"
+                aria-label={t('Visit Dachi Tchotashvili on GitHub')}
                 className="group flex items-center justify-between gap-4 border-b border-ink/10 pb-3 text-sm text-ink/80 transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-surface"
               >
                 <span className="inline-flex items-center gap-3">
@@ -109,7 +111,7 @@ export function Footer() {
                 href={PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Dachi Tchotashvili on LinkedIn"
+                aria-label={t('Visit Dachi Tchotashvili on LinkedIn')}
                 className="group flex items-center justify-between gap-4 border-b border-ink/10 pb-3 text-sm text-ink/80 transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-surface"
               >
                 <span className="inline-flex items-center gap-3">
@@ -141,7 +143,7 @@ export function Footer() {
           <div className="flex flex-col gap-5 text-[11px] leading-5 text-ink/50 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
             <p className="shrink-0">© {year} {PROFILE.name}</p>
             <div className="max-w-3xl space-y-1 sm:text-right">
-              <p>Built with React, Vite, and Tailwind CSS.</p>
+              <p>{t('Built with React, Vite, and Tailwind CSS.')}</p>
 
             </div>
           </div>

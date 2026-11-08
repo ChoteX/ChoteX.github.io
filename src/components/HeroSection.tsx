@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
+import { useLanguage } from '../LanguageContext';
 
 const HERO_LINKS = [
   { label: 'GitHub', href: PROFILE.github, external: true },
@@ -14,6 +15,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onOpenProject }: HeroSectionProps) {
+  const { t } = useLanguage();
   const [isRobotHovered, setIsRobotHovered] = useState(false);
 
   return (
@@ -38,7 +40,7 @@ export function HeroSection({ onOpenProject }: HeroSectionProps) {
             <div className="lg:absolute lg:left-0 lg:top-[56.6%] lg:-translate-y-[calc(100%+0.975rem)]">
               <div className="h-[3px] w-[60px] bg-accent" aria-hidden="true" />
               <h1 className="mt-7 font-display text-[clamp(2.25rem,5vw,4.125rem)] font-semibold leading-[1.1] tracking-tight text-ink-strong lg:whitespace-nowrap lg:text-[3.375rem] lg:leading-normal xl:text-[4.125rem]">
-                Hi, I'm {PROFILE.heroName}.
+                {t("Hi, I'm Dachi Tchotashvili.")}
               </h1>
             </div>
           </div>
@@ -48,7 +50,7 @@ export function HeroSection({ onOpenProject }: HeroSectionProps) {
               <span className="pointer-events-none invisible hidden select-none whitespace-nowrap font-display text-[2.8125rem] font-semibold italic tracking-tight lg:block xl:text-[2.5rem]" aria-hidden="true">
                 - I do
               </span>
-              <span className="whitespace-nowrap font-display text-[clamp(1.25rem,4vw,2.5rem)] font-semibold italic tracking-tight text-ink-strong lg:absolute lg:left-0 lg:top-[56.6%] lg:-translate-y-1/2 lg:text-[2.8125rem] xl:text-[2.5rem]">
+              <span lang="en" className="whitespace-nowrap font-display text-[clamp(1.25rem,4vw,2.5rem)] font-semibold italic tracking-tight text-ink-strong lg:absolute lg:left-0 lg:top-[56.6%] lg:-translate-y-1/2 lg:text-[2.8125rem] xl:text-[2.5rem]">
                 - I do
               </span>
             </div>
@@ -58,7 +60,7 @@ export function HeroSection({ onOpenProject }: HeroSectionProps) {
               onMouseLeave={() => setIsRobotHovered(false)}
             >
               <video autoPlay loop muted playsInline preload="metadata" width={2560} height={1520}
-                aria-label="L.A.R.A. robot arm flipping a cube"
+                aria-label={t('L.A.R.A. robot arm flipping a cube')}
                 className="pointer-events-none h-full w-full select-none object-contain mix-blend-screen">
                 <source src="./media/lara-cube-flip-safari.mov" type='video/mp4; codecs="hvc1"' />
                 <source src="./media/lara-cube-flip.webm" type="video/webm" />
@@ -81,7 +83,7 @@ export function HeroSection({ onOpenProject }: HeroSectionProps) {
               >
                 <button type="button" onClick={(event) => onOpenProject('lara', event.currentTarget)} aria-haspopup="dialog"
                   className="group inline-flex min-h-11 items-center gap-2 whitespace-nowrap border border-accent/60 bg-surface/95 px-5 py-2.5 font-display text-base font-semibold text-ink-strong shadow-lg shadow-black/50 backdrop-blur-md transition-colors hover:border-accent hover:bg-canvas hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-                  Explore project L.A.R.A.
+                  {t('Explore project L.A.R.A.')}
                   <ArrowUpRight className="h-4.5 w-4.5 text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
                 </button>
                 <div className="ml-[10px] h-[2px] w-[60px] rounded-full bg-accent" aria-hidden="true" />
@@ -93,16 +95,16 @@ export function HeroSection({ onOpenProject }: HeroSectionProps) {
         <div className="mt-4 flex justify-center sm:justify-end lg:hidden">
           <button type="button" onClick={(event) => onOpenProject('lara', event.currentTarget)} aria-haspopup="dialog"
             className="group inline-flex min-h-11 items-center gap-2 rounded-lg border border-accent bg-accent px-5 py-2.5 font-display text-sm font-semibold text-deep transition-colors hover:bg-accent/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-base">
-            Explore project L.A.R.A.
+            {t('Explore project L.A.R.A.')}
             <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
           </button>
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 sm:mt-10 sm:gap-x-9 lg:absolute lg:bottom-[30px] lg:left-8 lg:z-20 lg:mt-0">
           {HERO_LINKS.map((link) => (
-            <a key={link.label} href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}
+            <a key={t(link.label)} href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}
               className="group inline-flex min-h-11 items-center gap-1.5 border-b border-ink/30 py-2 text-base font-medium text-ink-strong transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-lg">
-              <span>{link.label}</span>
+              <span>{t(link.label)}</span>
               {link.external && <ArrowUpRight className="h-5 w-5 text-accent" aria-hidden="true" />}
             </a>
           ))}
