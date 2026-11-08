@@ -20,10 +20,10 @@ import {
 } from 'lucide-react';
 import {
   PROFILE,
-  PROJECTS,
   type ProjectIconId,
   type ProjectItem,
 } from '../data/portfolioData';
+import { useLanguage, usePortfolio } from '../LanguageContext';
 import { useModal } from '../useModal';
 import type { LightboxItem } from './ImageLightbox';
 
@@ -69,6 +69,7 @@ function ProjectPresentationViewer({
 }: {
   presentation: NonNullable<ProjectItem['presentationPdf']>;
 }) {
+  const { t } = useLanguage();
   return (
     <section
       aria-labelledby="project-presentation-title"
@@ -81,10 +82,10 @@ function ProjectPresentationViewer({
             className="inline-flex items-center gap-2 font-display text-sm font-semibold text-ink-strong"
           >
             <FileText className="h-4 w-4 text-accent" aria-hidden="true" />
-            Slide deck
+            {t('Slide deck')}
           </h3>
           <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink/55">
-            {presentation.slideCount} slides
+            {presentation.slideCount} {t('slides')}
           </p>
         </div>
         <a
@@ -93,7 +94,7 @@ function ProjectPresentationViewer({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-xs font-medium text-ink/80 transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          Open full PDF
+          {t('Open full PDF')}
           <ArrowUpRight className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
         </a>
       </div>
@@ -130,6 +131,7 @@ function ProjectCard({
   project: ProjectItem;
   onOpen: (projectId: string, trigger: HTMLElement) => void;
 }) {
+  const { t } = useLanguage();
   const cover = project.images?.[0];
   const isWideModel = project.id === 'sherekilebi-makerspace';
   const isPortrait = project.id === 'lara';
@@ -141,7 +143,7 @@ function ProjectCard({
         type="button"
         onClick={(event) => onOpen(project.id, event.currentTarget)}
         className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
-        aria-label={`Open details for ${project.title}`}
+        aria-label={t('Open details for {title}', { title: project.title })}
       >
         <div className="relative aspect-[16/10] overflow-hidden border-b border-ink/12 bg-inset">
           {cover ? (
@@ -160,7 +162,7 @@ function ProjectCard({
             />
           ) : (
             <div className="flex h-full items-center justify-center font-mono text-xs text-ink/60">
-              Image coming soon
+              {t('Image coming soon')}
             </div>
           )}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/75 via-transparent to-transparent" />
@@ -208,7 +210,7 @@ function ProjectCard({
             className="inline-flex items-center gap-2 text-xs font-medium text-ink transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             <Github className="h-4 w-4" />
-            GitHub repo
+            {t('GitHub repo')}
             <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
           </a>
         ) : null}
@@ -217,11 +219,11 @@ function ProjectCard({
             href={project.presentationPdf.src}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Open ${project.presentationPdf.label} in a new tab`}
+            aria-label={t('Open {title} in a new tab', { title: project.presentationPdf.label })}
             className="inline-flex items-center gap-2 text-xs font-medium text-ink transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             <FileText className="h-4 w-4 text-accent" aria-hidden="true" />
-            Slide deck
+            {t('Slide deck')}
             <ArrowUpRight className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
           </a>
         ) : null}
@@ -243,6 +245,7 @@ export function ProjectModal({
   returnFocus: HTMLElement | null;
   isLightboxOpen: boolean;
 }) {
+  const { t } = useLanguage();
   const closeRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const images = project.images ?? [];
@@ -262,7 +265,7 @@ export function ProjectModal({
     <div inert={isLightboxOpen} className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
       <button
         type="button"
-        aria-label="Close project details"
+        aria-label={t('Close project details')}
         tabIndex={-1}
         onClick={onClose}
         className="absolute inset-0 cursor-default bg-scrim/82 backdrop-blur-[2px]"
@@ -294,7 +297,7 @@ export function ProjectModal({
             ref={closeRef}
             type="button"
             onClick={onClose}
-            aria-label="Close project details"
+            aria-label={t('Close project details')}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/20 text-ink/75 transition hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <X className="h-5 w-5" />
@@ -375,7 +378,7 @@ export function ProjectModal({
               ) : (
                 <div className="mt-7 border-t border-ink/15 pt-6">
                   <h3 className="font-display text-lg font-semibold text-ink-strong">
-                    Inside the build
+                    {t('Inside the build')}
                   </h3>
                   <DetailList items={project.details} />
                 </div>
@@ -402,7 +405,7 @@ export function ProjectModal({
                       className="inline-flex items-center gap-2 font-medium text-ink-strong transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       <Github className="h-4 w-4" />
-                      GitHub repo
+                      {t('GitHub repo')}
                       <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
                     </a>
                   )}
@@ -441,12 +444,14 @@ export function ProjectModal({
 }
 
 export function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
+  const { t } = useLanguage();
+  const { projects: PROJECTS } = usePortfolio();
   return (
     <section id="projects" className="border-b border-ink/15 pb-16 sm:pb-24">
       <div className="sticky top-14 z-30 border-b border-ink/15 bg-canvas/95 py-4 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-ink-strong sm:text-4xl lg:text-5xl">
-            Selected Projects
+            {t('Selected Projects')}
           </h2>
         </div>
       </div>

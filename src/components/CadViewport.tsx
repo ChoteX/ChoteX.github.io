@@ -1,3 +1,4 @@
+import { useLanguage } from '../LanguageContext';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -11,6 +12,7 @@ interface CadViewportProps {
 }
 
 export function CadViewport({ src, label }: CadViewportProps) {
+  const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
@@ -245,7 +247,7 @@ export function CadViewport({ src, label }: CadViewportProps) {
 
       {status === 'error' && (
         <div className="absolute inset-0 z-20 flex items-center justify-center bg-inset px-6 text-center text-xs text-ink/75">
-          3D preview unavailable in this browser.
+          {t('3D preview unavailable in this browser.')}
         </div>
       )}
 
@@ -257,10 +259,10 @@ export function CadViewport({ src, label }: CadViewportProps) {
             className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] transition ${
               autoRotate ? 'text-accent' : 'text-ink/80 hover:text-white'
             }`}
-            title="Toggle rotation"
+            title={t('Toggle rotation')}
           >
             {autoRotate ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
-            <span>Rotate</span>
+            <span>{t('Rotate')}</span>
           </button>
           <span className="text-ink/20">|</span>
           <button
@@ -269,20 +271,20 @@ export function CadViewport({ src, label }: CadViewportProps) {
             className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] transition ${
               xrayMode ? 'text-accent' : 'text-ink/80 hover:text-white'
             }`}
-            title="Toggle wireframe"
+            title={t('Toggle wireframe')}
           >
             <Layers className="h-3 w-3" />
-            <span>Wireframe</span>
+            <span>{t('Wireframe')}</span>
           </button>
           <span className="text-ink/20">|</span>
           <button
             type="button"
             onClick={handleReset}
             className="inline-flex items-center gap-1 px-1.5 py-0.5 text-[11px] text-ink/80 transition hover:text-white"
-            title="Reset view"
+            title={t('Reset view')}
           >
             <RotateCcw className="h-3 w-3" />
-            <span>Reset</span>
+            <span>{t('Reset')}</span>
           </button>
         </div>
       )}

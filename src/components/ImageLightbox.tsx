@@ -1,3 +1,4 @@
+import { useLanguage } from '../LanguageContext';
 import { useRef } from 'react';
 import { X } from 'lucide-react';
 import { useModal } from '../useModal';
@@ -16,6 +17,7 @@ interface ImageLightboxProps {
 }
 
 export function ImageLightbox({ item, onClose, returnFocus }: ImageLightboxProps) {
+  const { t } = useLanguage();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   useModal({ isOpen: item !== null, onClose, dialogRef, closeRef, returnFocus });
@@ -44,7 +46,7 @@ export function ImageLightbox({ item, onClose, returnFocus }: ImageLightboxProps
             type="button"
             onClick={onClose}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-ink/80 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label="Close image preview"
+            aria-label={t('Close image preview')}
           >
             <X className="h-4 w-4" />
           </button>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-import { PROFILE } from '../data/portfolioData';
+import { useLanguage, usePortfolio } from '../LanguageContext';
+import { LanguageToggle } from './LanguageToggle';
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -10,21 +11,23 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const { t } = useLanguage();
+  const { profile: PROFILE } = usePortfolio();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/15 bg-canvas/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-5 sm:px-8">
         <a
           href="#top"
-          className="font-display text-sm font-semibold tracking-tight text-ink-strong transition hover:text-accent"
+          className="min-w-0 font-display text-xs font-semibold tracking-tight text-ink-strong transition hover:text-accent sm:text-sm"
         >
           {PROFILE.name}
         </a>
 
         <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-7 lg:flex"
+          aria-label={t('Primary navigation')}
+          className="hidden items-center gap-5 xl:gap-7 lg:flex"
         >
           {NAV_LINKS.map((link) => (
             <a
@@ -32,7 +35,7 @@ export function Navbar() {
               href={link.href}
               className="text-sm text-ink/85 transition hover:text-accent"
             >
-              {link.label}
+              {t(link.label)}
             </a>
           ))}
 
@@ -54,25 +57,28 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="border-b border-accent pb-0.5 text-sm font-medium text-ink-strong transition hover:text-accent"
           >
-            CV
+            {t('CV')}
           </a>
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setMobileOpen((prev) => !prev)}
-          className="flex h-11 w-11 items-center justify-center text-ink transition hover:text-accent lg:hidden"
-          aria-controls="mobile-navigation"
-          aria-expanded={mobileOpen}
-          aria-label="Toggle navigation menu"
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+          <LanguageToggle />
+          <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="flex h-11 w-11 items-center justify-center text-ink transition hover:text-accent lg:hidden"
+            aria-controls="mobile-navigation"
+            aria-expanded={mobileOpen}
+            aria-label={t('Toggle navigation menu')}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
         <div id="mobile-navigation" className="absolute inset-x-0 top-full max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-ink/15 bg-surface px-5 py-4 lg:hidden">
-          <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
+          <nav className="flex flex-col gap-3" aria-label={t('Mobile navigation')}>
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -80,7 +86,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex min-h-11 items-center text-sm text-ink transition hover:text-accent"
               >
-                {link.label}
+                {t(link.label)}
               </a>
             ))}
             <a
@@ -98,7 +104,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-sm font-medium text-accent"
             >
-              CV (PDF)
+              {t('CV (PDF)')}
             </a>
           </nav>
         </div>
