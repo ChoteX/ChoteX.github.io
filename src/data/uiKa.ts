@@ -36,7 +36,7 @@ export const UI_KA: Record<string, string> = {
   'GitHub repo': 'GitHub რეპოზიტორია',
   'Close project details': 'პროექტის აღწერის დახურვა',
   'Close image preview': 'ფოტოს დახურვა',
-  'Inside the build': 'როგორ შევქმენი',
+  'Inside the build': 'როგორ შეიქმნა',
   'Open details for {title}': '{title} — ვრცლად',
   'Open {title} in a new tab': '{title} — ახალ ჩანართში გახსნა',
   '3D preview unavailable in this browser.': 'ამ ბრაუზერში 3D მოდელის ჩვენება ვერ ხერხდება.',
