@@ -51,6 +51,7 @@ export interface ProjectItem {
   schematicId?: SchematicId;
   defaultMode?: 'cad' | 'photo' | 'schematic';
   githubUrl?: string;
+  reportUrl?: string;
   secondaryGithub?: {
     label: string;
     url: string;
@@ -114,6 +115,57 @@ export const PROFILE: Profile = {
 
 // Strictly sorted by most recent first
 const ALL_PROJECTS: ProjectItem[] = [
+  {
+    id: 'maxbot',
+    icon: 'bot',
+    year: 'Nov 2026 - In development',
+    title: 'MaxBot: Vision & Robot Control',
+    context: 'Android Vision · ESP32 C++ · Signal Propagation',
+    summary:
+      'Pixel 5 and ESP32 robot-car platform combining YOLOv5n object detection, collision-warning automation, and manual control. The hardware baseline measured 185 ms image-to-warning draw and 63 ms input-to-PWM response. Slalom policy training is in progress.',
+    details: ['Architecture, measured latency, and current development are detailed below.'],
+    detailSections: [
+      {
+        title: 'System architecture',
+        items: [
+          'Built an Android vision agent running the YOLOv5n COCO baseline on Pixel 5, with latest-frame processing and advisory collision-detection warnings during manual control.',
+          'Developed signed ESP32 C++ actuation and telemetry, a Mac dashboard, and a USB serial link at 921600 baud; bounded commands, watchdogs, and manual takeover govern the control path.',
+          'Added a local MCP experiment coordinator and an external Android observer to collect timestamped traces, original video, and automatic latency reports.',
+        ],
+      },
+      {
+        title: 'Measured latency',
+        items: [
+          '16 November hardware baseline: image availability to Pixel warning draw was 185.0 ms median / 219.2 ms p95 across 31 warning-positive frames. Exposure and physical display scanout are outside this endpoint.',
+          'Mac input transition to ESP32 PWM API write was 63 ms median / 130 ms p95 across 62 transitions, with cross-device clock uncertainty. This measures the electrical command path; physical motor onset remains unmeasured.',
+          '18 November USB bench: 150/150 signed disarm replies at 49.9 Hz, with 26.1 ms median / 28.3 ms p95 Mac-to-ESP request/reply time. This round trip is a separate endpoint; the supplied newer runs do not establish a like-for-like latency improvement.',
+        ],
+      },
+      {
+        title: 'Current development',
+        items: [
+          'Object detection and collision-warning automation are implemented. The onboard camera is partly occluded by the car body, so warning reliability and usable field of view need further validation.',
+          'Slalom policy training, reviewed dataset collection, and vehicle-dynamics calibration are in progress; completed autonomous slalom performance is not yet claimed.',
+        ],
+      },
+    ],
+    tags: ['Robotics', 'ESP32', 'Android', 'YOLOv5n', 'C++', 'USB Serial', 'Latency Analysis'],
+    images: [
+      {
+        src: './media/maxbot-v1.jpg',
+        alt: 'MaxBot RC car with the Pixel 5 camera mounted inside its black body',
+        caption: 'MaxBot v1: Pixel 5 vision and ESP32 control integrated into an RC car.',
+      },
+      {
+        src: './media/maxbot-latency-baseline.svg',
+        alt: '16 November hardware baseline: warning draw 185 ms median and 219 ms p95; input to PWM write 63 ms median and 130 ms p95',
+        caption: 'Measured software endpoints, 16 November 2026. Newer supplied runs do not demonstrate a comparable latency improvement.',
+      },
+    ],
+    githubUrl: 'https://github.com/Sherekilebi-labs/Autonomious-Race-Car',
+    reportUrl: 'https://github.com/Sherekilebi-labs/Autonomious-Race-Car/blob/main/docs/autonomy/reports/2026-11-18-final-latency-report.md',
+    sherekilebiLab: true,
+  },
   {
     id: 'lara',
     icon: 'bot',
@@ -464,6 +516,7 @@ const ALL_PROJECTS: ProjectItem[] = [
 ];
 
 export const PROJECTS: ProjectItem[] = [
+  'maxbot',
   'lara',
   'active-spoiler',
   'tekkai-2',

@@ -33,6 +33,7 @@ export const UI_KA: Record<string, string> = {
   slides: 'სლაიდი',
   'Open full PDF': 'სრული PDF-ის გახსნა',
   'Image coming soon': 'ფოტო მალე დაემატება',
+  'Latency report': 'დაყოვნების ანგარიში',
   'GitHub repo': 'GitHub რეპოზიტორია',
   'Close project details': 'პროექტის აღწერის დახურვა',
   'Close image preview': 'ფოტოს დახურვა',

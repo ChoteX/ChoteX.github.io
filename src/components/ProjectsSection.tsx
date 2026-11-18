@@ -214,6 +214,18 @@ function ProjectCard({
             <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
           </a>
         ) : null}
+        {project.reportUrl ? (
+          <a
+            href={project.reportUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-xs font-medium text-ink transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <FileText className="h-4 w-4" aria-hidden="true" />
+            {t('Latency report')}
+            <ArrowUpRight className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          </a>
+        ) : null}
         {project.presentationPdf ? (
           <a
             href={project.presentationPdf.src}
@@ -407,6 +419,19 @@ export function ProjectModal({
                       <Github className="h-4 w-4" />
                       {t('GitHub repo')}
                       <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
+                    </a>
+                  )}
+
+                  {project.reportUrl && (
+                    <a
+                      href={project.reportUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-medium text-ink-strong transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      <FileText className="h-4 w-4" aria-hidden="true" />
+                      {t('Latency report')}
+                      <ArrowUpRight className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
                     </a>
                   )}
 
